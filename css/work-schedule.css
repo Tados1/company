@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(219, 219, 219);
+}
+
+.background-work-schedule {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)), url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat; 
+    clip-path: polygon(0 0, 67% 0, 54% 100%, 0% 100%);
+}
+
+.work-schedule {
+    position: relative;
+    z-index: 0;
+}
+
+.heading-work-schedule {
+    position: relative;
+    color: rgb(219, 219, 219);
+    background-color: black;
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+    width: 40vw;
+    clip-path: polygon(50% 0%, 84% 0, 100% 100%, 0 100%, 0 0);
+    margin-top: 50px;
+    z-index: 100;
+}
+
+.heading-work-schedule::before {
+    content: "";
+    position: absolute;
+    top: 97%;
+    left: 0;
+    width: 40vw;
+    height: 0;
+    border-top: 4px solid rgb(209, 209, 209);
+    box-sizing: border-box;
+}
+
+.all-employees {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 70%;
+    margin: 100px auto;
+    padding: 50px 10px;
+    border-radius: 40px;
+}
+
+.one-employee {
+    margin: 20px;
+}
+
+.one-employee h2 {
+    font-size: 32px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.one-employee p {
+    font: 20px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.one-employee a img {
+    width: 200px;
+    border: 5px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: rgb(255, 0, 0);
+    transition: all linear .2s
+}
+
+.one-employee a img:hover,
+.one-employee a img:active {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0px 0px 40px black;
+}

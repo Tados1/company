@@ -1,0 +1,54 @@
+.contact {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.form form {
+    height: 100vh;
+    width: 60vw;
+    clip-path: polygon(50% 0%, 100% 0, 84% 100%, 0 100%, 0 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form form input, textarea {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.form form textarea {
+    resize: none;
+}
+
+.form form button {
+    margin-top: 40px;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    color: rgb(139, 139, 139);
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s linear all;
+}
+
+.form form button:hover,
+.form form button:active {
+    transform: scale(1.2);
+    color: white;
+}

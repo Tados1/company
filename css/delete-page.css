@@ -1,0 +1,84 @@
+.delete-page  {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.delete-form {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 50vw;
+    height: 70vh;
+    background-color: rgba(255, 255, 255, .5);
+    border: 1px solid rgb(136, 136, 136);
+    border-radius: 20px;
+}
+
+.user-icon {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.user-icon i {
+    font-size: 150px;
+}
+
+.delete-text {
+    text-align: center;
+}
+
+.delete-text p {
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btns {
+    text-align: center;
+    font-family: sans-serif;
+    margin-top: 50px;
+}
+
+.btns button {
+    outline: none;
+    font-size: 30px;
+    padding: 5px 20px;
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 30px;
+    transition: all linear .2s;
+}
+
+.btns button:hover,
+.btns button:active {
+    box-shadow: 0px 0px 10px black;
+    background-color: rgb(182, 182, 182);
+}
+
+.btns a {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 31px;
+    padding: 5px 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    transition: all linear .2s;
+}
+
+.btns a:hover,
+.btns a:active {
+    box-shadow: 0px 0px 10px black;
+    background-color: rgb(182, 182, 182);
+}

@@ -20,7 +20,7 @@
         </section>
 
         <section class="link">
-            <a href="../admin/employees.php">Back to main page of administration</a>
+            <a href="../manager/employees.php">Back to main page of administration</a>
         </section>
     </main>
 

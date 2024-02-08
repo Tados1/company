@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(216, 216, 216);
+}
+
+.home-page {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 50vh;
+}
+
+.heading-home-page h1 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 50vw;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-text-stroke: 1px white;
+    font-size: 90px;
+    clip-path: polygon(50% 0%, 90% 0, 100% 100%, 10% 100%, 0 0);
+    padding: 20px;
+}

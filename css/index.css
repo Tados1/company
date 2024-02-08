@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.introductory-page {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.white {
+    clip-path: polygon(0 0, 100% 0, 73% 100%, 0 100%);
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 60vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.introductory-page h1 {
+    position: absolute;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    top: 40%;
+    left: 50%;
+    font-size: 150px;
+    font-weight: normal;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 5px;
+    background-color: rgb(185, 185, 185);
+    padding: 10px 30px;
+}
+
+.introductory-page a {
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}

@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sign-in-content {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+    ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.sign-in-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 50vh;
+    width: 25vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 30px;
+}
+
+.sign-in-form h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.sign-in-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-form form p {
+    font-family: sans-serif;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.sign-in-form form input {
+    outline: none;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 25px;
+}
+
+.sign-in-form input[type="submit"] {
+    background-color: black;
+    color: white;
+    width: 340px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.2s linear all;
+}   
+
+.sign-in-form input[type="submit"]:hover,
+.sign-in-form input[type="submit"]:active {
+    box-shadow: 0px 0px 20px black;
+}   

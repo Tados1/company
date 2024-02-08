@@ -1,0 +1,95 @@
+.add {
+    position: relative;
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+    ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.add-form {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    box-shadow: 0px 0px 150px #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-form input {
+    font-size: 25px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #4CB9E7;
+    outline: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+.add-form label {
+    font-size: 25px;
+    color: white;
+}
+
+.position-role {
+    display: flex;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.position {
+    margin-right: 35px; 
+    border-right: 1px solid #4CB9E7; 
+    padding-right: 40px; 
+}
+
+.add-form p {
+    margin-top: 20px;
+    font-size: 37px;
+    color: #4CB9E7;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.add-form input[type="radio"] {
+    display: none; 
+}
+
+.add-form .radio-label {
+    margin: 7px;
+    text-align: center;
+}
+
+.add-form .radio-label input[type="radio"]:checked + label {
+    color: #4CB9E7;
+    font-size: 28px;
+}
+
+.add-form button {
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 25px;
+    cursor: pointer;
+    margin-top: 50px;
+    background-color: #4CB9E7;
+    border: none;
+    border-radius: 30px;
+    transition: all linear .2s;
+}
+
+.add-form button:hover,
+.add-form button:active {
+    box-shadow: 0px 0px 60px #4CB9E7;
+    color: #0175af;
+    transform: scale(1.1);
+}

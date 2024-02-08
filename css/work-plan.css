@@ -1,0 +1,137 @@
+.work-plan {
+    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+    ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.work-plan form  {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 70vh;
+    width: 80vw;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.work-questions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.work-plan button {
+    margin: 0 auto;
+}
+
+.type-of-work {
+    border-right: 2px solid black;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.type-of-work p {
+    font-size: 70px;
+    margin-bottom: 50px;
+}
+
+.radio-label label {
+    cursor: pointer;
+}
+
+.type-of-work input[type="radio"] {
+    display: none; 
+}
+
+.type-of-work .radio-label {
+    cursor: pointer;
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.type-of-work .radio-label input[type="radio"]:checked + label {
+    color: rgb(35, 32, 211);
+    font-size: 65px;
+}
+
+.message-about-work {
+    border-right: 2px solid black;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-about-work textarea {
+    color: black;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    height: 100%;
+    resize: none;
+}
+
+.message-about-work textarea::placeholder {
+    color: black; 
+}
+
+.machines-for-work {
+    width: 100%;
+    height: 90%;
+}
+
+.machines-for-work p {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.machines {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.one-machine {
+    margin: 10px;
+}
+
+.work-plan form button {
+    display: block;
+    margin-top: 40px;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s linear all;
+}
+
+.work-plan form button:hover,
+.work-plan form button:active {
+    transform: scale(1.2);
+    color: rgb(59, 59, 59);
+}

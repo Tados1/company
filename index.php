@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Company</h1>
-    <a href="admin/machines.php">Machines</a>
-    <a href="admin/employees.php">Employees</a>
+    <section class="introductory-page">
+        <div class="white"></div>
+        <h1>COMPANY</h1>
+        <a href="sign-in.php">Sign In</a>
+    </section>
 </body>
 </html>
