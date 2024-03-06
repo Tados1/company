@@ -4,6 +4,7 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Manager.php";
 require "../classes/Auth.php";
+require "../classes/Image.php";
 
 session_start();
 
@@ -14,33 +15,49 @@ if (!Auth::isLoggedIn("director") ) {
 $name = null;
 $surname = null;
 $position = null;
-$role = null;
 $login_name = null;
 $password = null;
 $role = null;
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST"  && isset($_FILES["image"])) {
+
+    $connection = Database::databaseConnection();
 
     $name = $_POST["name"];
     $surname = $_POST["surname"];
     $position = $_POST["position"];
-    $role = $_POST["role"];
     $login_name = $_POST["login_name"];
     $password = $_POST["password"];
+    $role = $_POST["role"];
 
-    if (empty($position)) {
-        $position = "";
-    }
+    $image_name = $_FILES["image"]["name"];
+    $image_size = $_FILES["image"]["size"];
+    $image_tmp_name = $_FILES["image"]["tmp_name"];
+    $error = $_FILES["image"]["error"];
 
-    $connection = Database::databaseConnection();
-    
-    $id = Manager::createEmployee($connection, $name, $surname, $position, $login_name, $password, $role);
-
-    if($id){
-        Url::redirectUrl("/company/director/one-employee.php?id=$id");
+    if(!$error) {
+        if ($image_size > 9000000){
+            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big");
+        } else {
+            $new_image_name = Image::getEmployeePhotoName($image_name, $image_tmp_name);
+                
+            if(Manager::createEmployee($connection, $name, $surname, $position, $login_name, $password, $role, $new_image_name)) {
+                Url::redirectUrl("/company/director/employees.php");
+            } else {
+                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed");
+            }
+        }
     } else {
-        echo "The employee was not created";
+        Url::redirectUrl("/company/errors/error-page.php?error_text=Unfortunately, the image could not be inserted");
     }
+    
+    // $id = Manager::createEmployee($connection, $name, $surname, $position, $login_name, $password, $role, $image_name);
+
+    // if($id){
+    //     Url::redirectUrl("/company/manager/one-employee.php?id=$id");
+    // } else {
+    //     echo "The employee was not created";
+    // }
 }
 
 ?>
@@ -58,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php require "../assets/director-header.php"; ?>
 
     <main class="add">
-        <form method="POST" class="add-form">
+        <form method="POST" class="add-form" enctype="multipart/form-data">
 
             <input  type="text" 
                     name="name" 
@@ -123,6 +140,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>  
             </div>
            
+            <input type="file" name="image">
+
             <button>Add Employee</button>
 
         </form>

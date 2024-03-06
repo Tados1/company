@@ -40,16 +40,17 @@ class Machine {
         }
     }
 
-    public static function createMachine($connection, $machine_name, $machine_type, $machine_status) {
+    public static function createMachine($connection, $machine_name, $machine_type, $machine_status, $machine_image) {
 
-        $sql = "INSERT INTO machine (machine_name, machine_type, machine_status) 
-        VALUES (:machine_name, :machine_type, :machine_status)";
+        $sql = "INSERT INTO machine (machine_name, machine_type, machine_status, machine_image) 
+        VALUES (:machine_name, :machine_type, :machine_status, :machine_image)";
 
         $stmt = $connection->prepare($sql);
 
         $stmt->bindValue(":machine_name", $machine_name, PDO::PARAM_STR);
         $stmt->bindValue(":machine_type", $machine_type, PDO::PARAM_STR);
         $stmt->bindValue(":machine_status", $machine_status, PDO::PARAM_STR);
+        $stmt->bindValue(":machine_image", $machine_image, PDO::PARAM_STR);
 
         try {
             if($stmt->execute()) {
@@ -64,12 +65,13 @@ class Machine {
         }
     }
 
-    public static function editMachine($connection, $machine_name, $machine_type, $machine_status, $id){
+    public static function editMachine($connection, $machine_name, $machine_type, $machine_status, $machine_image, $id){
 
         $sql = "UPDATE machine
                     SET machine_name = :machine_name,
                         machine_type = :machine_type,
-                        machine_status = :machine_status
+                        machine_status = :machine_status,
+                        machine_image = :machine_image
                     WHERE machine_id = :id";
         
         $stmt = $connection->prepare($sql);
@@ -77,6 +79,7 @@ class Machine {
         $stmt->bindValue(":machine_name", $machine_name, PDO::PARAM_STR);
         $stmt->bindValue(":machine_type", $machine_type, PDO::PARAM_STR);
         $stmt->bindValue(":machine_status", $machine_status, PDO::PARAM_STR);
+        $stmt->bindValue(":machine_image", $machine_image, PDO::PARAM_STR);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
 
         try {

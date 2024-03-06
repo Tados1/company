@@ -9,6 +9,7 @@ session_start();
 if (!Auth::isLoggedIn("manager") ) {
     die("Unauthorized access");
 }
+
 $connection = Database::databaseConnection();
 
 if ( isset($_GET["id"]) and is_numeric($_GET["id"])) { 
@@ -16,7 +17,7 @@ if ( isset($_GET["id"]) and is_numeric($_GET["id"])) {
 } else {
     $employees = null;
 }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -38,15 +39,18 @@ if ( isset($_GET["id"]) and is_numeric($_GET["id"])) {
                 <p>There is no employee</p>
             <?php else: ?>
                 <div class="one-employee-box">
-                    
-                    <div class="employee-photo">
-                        <img src="../img/employee.jpg" alt="">
-                    </div>         
+                    <div class="box-background"></div>
 
+                    <div class="profile-photo">
+                        <?php if($employees["image_name"]): ?>
+                            <img src=<?= "../uploads/employees/" . $employees["image_name"] ?> alt="">
+                        <?php else: ?>
+                            <img src="../uploads/default-photos/employee.jpg" >
+                        <?php endif; ?>
+                    </div>
+                
                     <div class="about-one-employee">
-                        <div class="employee-name">
-                            <h2><?= htmlspecialchars($employees['name']) . " ".htmlspecialchars($employees['surname'])?></h2>
-                        </div>
+                        <h2><?= htmlspecialchars($employees['name']) . " ".htmlspecialchars($employees['surname'])?></h2>
                         
                         <p>Position: <?= htmlspecialchars($employees['position'])?></p>
                         <p>Login Name: <?= htmlspecialchars($employees['login_name'])?></p>

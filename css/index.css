@@ -4,50 +4,191 @@
     padding: 0;
 }
 
-.introductory-page {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+body {
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
                 ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
 }
 
-.white {
-    clip-path: polygon(0 0, 100% 0, 73% 100%, 0 100%);
-    background-color: rgba(255, 255, 255, 0.6);
-    width: 60vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
+.blue-background {
+    clip-path: polygon(0 0, 55% 0, 76% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
+    width: 60%;
+    height: 100%;
     position: absolute;
 }
 
-.introductory-page h1 {
+ h1 {
     position: absolute;
     transform: translateY(-50%);
     transform: translateX(-50%);
     top: 40%;
-    left: 50%;
-    font-size: 150px;
+    left: 40%;
+    color: white;
+    font-size: 300px;
+    font-style: italic;
     font-weight: normal;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 5px;
-    background-color: rgb(185, 185, 185);
-    padding: 10px 30px;
+    letter-spacing: .02em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
 
-.introductory-page a {
-    font-size: 30px;
-    text-decoration: none;
-    color: white;
+a {
+    --primary-color: #0B60B0;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    
     position: absolute;
     top: 2%;
     right: 2%;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 0.8em 1.4em;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    font-size: 22px;
+    text-decoration: none;
+}
+  
+a .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+a .arrow {
+    margin-top: 3px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+}
+  
+a .arrow::before {
+    content: "";
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: .1s;
+    padding: 3px;
+    transform: rotate(-45deg);
+}
+  
+a:hover {
+    background-color: var(--hover-color);
+}
+  
+a:hover .arrow {
+    background: var(--secondary-color);
+}
+  
+a:hover .arrow:before {
+    right: 0;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1500px) {
+  
+    .blue-background {
+        width: 65%;
+    }
+
+    h1 {
+        font-size: 230px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+
+    h1 {
+        font-size: 170px;
+    }
+
+    a {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 870px) {
+  
+    .blue-background {
+        width: 75%;
+    }
+
+    h1 {
+        font-size: 130px;
+    }
+
+    a {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    .blue-background {
+        clip-path: polygon(0 0, 35% 0, 95% 100%, 0% 100%);
+    }
+
+
+    h1 {
+        font-size: 100px;
+        left: 45%;
+    }  
+
+    a .arrow {
+        height: 1px;
+        margin-top: 2px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 70px;
+    }
+
+    a {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0.5em 1em;
+    }
+
+    a .arrow::before {
+        border-width: 0 1px 1px 0;
+        padding: 2px;
+        right: 2px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    a {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 260px) {
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 230px) {
+    h1 {
+        font-size: 30px;
+    }
 }

@@ -7,6 +7,7 @@ $note = null;
 require "../classes/Database.php";
 require "../classes/Machine.php";
 require "../classes/Auth.php";
+require "../classes/Url.php";
 
 session_start();
 
@@ -16,24 +17,11 @@ if (!Auth::isLoggedIn("manager") ) {
 
 $connection = Database::databaseConnection();
 
-
 $machines = Machine::getExactTypeMachines($connection, $position, "machine_id, machine_name");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $selectedWorkType = $_POST["work-type"];
-    $note = $_POST["note"];
-    $selectedMachines = isset($_POST["selectedMachines"]) ? $_POST["selectedMachines"] : [];
-
-    if (!empty($selectedMachines)) {
-        echo "Selected machines: " . implode(", ", $selectedMachines);
-    } else {
-        echo "No machines selected";
-    }
-
-    echo "<br>";
-    echo $selectedWorkType;
-    echo "<br>";
-    echo $note;
+    setcookie("employee_$id", serialize($_POST), time() + (24 * 3600), "/");
+    Url::redirectUrl("/company/manager/work-schedule.php");
 }
 
 ?>
@@ -52,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <main class="work-plan">
 
-        <form action="../employee/home-page.php?id=<?= $id ?>&position=<?= $position ?>" method="POST">
+        <form method="post">
             <div class="work-questions">
                 <div class="type-of-work">
                     <p>Type of work:</p>
@@ -88,12 +76,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="machines">
                             <?php foreach($machines as $one_machine): ?>
                                 <div class="one-machine">
-                                    <input type="checkbox" 
-                                        id="<?= htmlspecialchars($one_machine["machine_id"]) ?>" 
-                                        name="selectedMachines[]" 
-                                        value="<?= htmlspecialchars($one_machine["machine_name"]) ?>">
-                                    <label for="<?= htmlspecialchars($one_machine["machine_id"]) ?>">
-                                    <?= htmlspecialchars($one_machine["machine_name"]) ?></label>
+                                    <label class="switch">
+                                        <input type="checkbox" 
+                                            id="<?= htmlspecialchars($one_machine["machine_id"]) ?>" 
+                                            name="selectedMachines[]" 
+                                            value="<?= htmlspecialchars($one_machine["machine_name"]) ?>"
+                                        >
+                                        <span class="slider">
+                                            <svg class="slider-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"><path fill="none" d="m4 16.5 8 8 16-16"></path></svg> 
+                                        </span>
+                                        <p><?= htmlspecialchars($one_machine["machine_name"]) ?></p>
+                                    </label>
+                                    
                                 </div>
                             <?php endforeach; ?>
                         </div>   

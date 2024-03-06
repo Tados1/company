@@ -8,7 +8,6 @@ if (!Auth::isLoggedIn("manager") ) {
     die("Unauthorized access");
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +19,10 @@ if (!Auth::isLoggedIn("manager") ) {
     <title>Home Page</title>
 </head>
 <body>
-    <div class="home-page">
-        <?php require "../assets/manager-header.php"; ?>
-        <div class="heading-home-page">
-            <h1>HOME PAGE</h1>  
-        </div>   
-    </div>
+    <?php require "../assets/manager-header.php"; ?>
+
+    <div class="blue-background"></div>
+
+    <h1>HOME PAGE</h1>  
 </body>
 </html>

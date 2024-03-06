@@ -4,6 +4,7 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Manager.php";
 require "../classes/Auth.php";
+require "../classes/Image.php";
 
 session_start();
 
@@ -40,9 +41,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_name = $_POST["login_name"];
     $password = $_POST["password"];
 
-    if(Manager::editEmployee($connection, $name, $surname, $position, $login_name, $password, $id)){
-        Url::redirectUrl("/company/manager/one-employee.php?id=$id");
-    };
+    $image_name = $_FILES["image"]["name"];
+    $image_size = $_FILES["image"]["size"];
+    $image_tmp_name = $_FILES["image"]["tmp_name"];
+    $error = $_FILES["image"]["error"];
+
+    if(!$error) {
+        if ($image_size > 9000000){
+            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big");
+        } else {
+            $new_image_name = Image::getEmployeePhotoName($image_name, $image_tmp_name);
+                
+            if(Manager::editEmployee($connection, $name, $surname, $position, $login_name, $password, $id, $new_image_name)) {
+                Url::redirectUrl("/company/manager/one-employee.php?id=$id");
+            } else {
+                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed");
+            }
+        }
+    } else {
+        Url::redirectUrl("/company/errors/error-page.php?error_text=Unfortunately, the image could not be inserted");
+    }
+
+    // if(Manager::editEmployee($connection, $name, $surname, $position, $login_name, $password, $id)){
+    //     Url::redirectUrl("/company/manager/one-employee.php?id=$id");
+    // };
 }
 
 ?>
@@ -61,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <main class="edit">
         
-        <form method="POST" class="edit-form">
+        <form method="POST" class="edit-form" enctype="multipart/form-data">
 
             <input  type="text" 
                     name="name" 
@@ -103,6 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="miller">Miller</label>  
             </div>
 
+            <input type="file" name="image">
+    
             <button>Change</button>
         </form>
     </main>

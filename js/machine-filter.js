@@ -1,4 +1,4 @@
-const input = document.querySelector(".filter-input");
+const input = document.querySelector(".search_input");
 const allOneMachine = document.querySelectorAll(".one-machine");
 const allOneMachineArray = Array.from(allOneMachine);
 const allMachinesDiv = document.querySelector(".all-machines");
@@ -6,14 +6,14 @@ const allMachinesDiv = document.querySelector(".all-machines");
 const machinesObjects = allOneMachineArray.map((oneMachine, index) => {
     return {
         id: index,
-        machineHTML: oneMachine.innerHTML.toLowerCase()
+        machineHTML: oneMachine.innerHTML
     };
 });
 
 input.addEventListener("input", () => {
     const inputText = input.value.toLowerCase();
     const filteredMachines = machinesObjects.filter((oneMachine) => {
-        return oneMachine.machineHTML.includes(inputText);
+        return oneMachine.machineHTML.toLowerCase().includes(inputText);
     });
 
     allMachinesDiv.innerHTML = "";
@@ -27,3 +27,4 @@ input.addEventListener("input", () => {
         allMachinesDiv.append(newDiv);
     });
 });
+

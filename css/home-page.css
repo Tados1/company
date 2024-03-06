@@ -1,29 +1,90 @@
-body {
-    background-color: rgb(216, 216, 216);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.home-page {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+body {
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
                 ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 50vh;
 }
 
-.heading-home-page h1 {
+.blue-background {
+    clip-path: polygon(0 0, 55% 0, 76% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
+    width: 60%;
+    height: 100%;
     position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    width: 50vw;
-    background-color: black;
+}
+
+h1 {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 60%;
+    width: 100%;
+    padding-left: 5%;
     color: white;
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    -webkit-text-stroke: 1px white;
-    font-size: 90px;
-    clip-path: polygon(50% 0%, 90% 0, 100% 100%, 10% 100%, 0 0);
-    padding: 20px;
+    font-size: 230px;
+    font-style: italic;
+    font-weight: normal;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .02em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1500px) {
+    h1 {
+        font-size: 180px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .blue-background {
+        width: 70%;
+    }
+    
+    h1 {
+        font-size: 150px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    h1 {
+        font-size: 120px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .blue-background {
+        clip-path: polygon(0 0, 45% 0, 86% 100%, 0% 100%);
+    }
+
+    h1 {
+        font-size: 90px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 70px;
+        top: 50%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    h1 {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 270px) {
+    h1 {
+        font-size: 40px;
+    }
 }

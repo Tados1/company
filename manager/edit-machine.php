@@ -4,6 +4,7 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Machine.php";
 require "../classes/Auth.php";
+require "../classes/Image.php";
 
 session_start();
 
@@ -36,9 +37,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $machine_type = $_POST["machine_type"];
     $machine_status = $_POST["machine_status"];
 
-    if(Machine::editMachine($connection, $machine_name, $machine_type, $machine_status, $id)){
-        Url::redirectUrl("/company/manager/machines.php");
-    };
+    $image_name = $_FILES["image"]["name"];
+    $image_size = $_FILES["image"]["size"];
+    $image_tmp_name = $_FILES["image"]["tmp_name"];
+    $error = $_FILES["image"]["error"];
+
+    if(!$error) {
+        if ($image_size > 9000000){
+            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big");
+        } else {
+            $new_image_name = Image::getMachinePhotoName($image_name, $image_tmp_name);
+                
+            if(Machine::editMachine($connection, $machine_name, $machine_type, $machine_status, $new_image_name, $id)) {
+                Url::redirectUrl("/company/manager/machines.php");
+            } else {
+                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed");
+            }
+        }
+    } else {
+        Url::redirectUrl("/company/errors/error-page.php?error_text=Unfortunately, the image could not be inserted");
+    }
 }
 
 ?>
@@ -56,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "../assets/manager-header.php"; ?>
 
     <main class="edit-machine">
-        <form method="POST" class="edit-form">
+        <form method="POST" class="edit-form" enctype="multipart/form-data">
 
             <input  type="text" 
                     name="machine_name" 
@@ -93,6 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="non-active">Non-active</label>  
                 </div>   
             </div>
+
+            <input type="file" name="image">
             
             <button>Change</button>
         </form>

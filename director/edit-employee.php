@@ -4,6 +4,7 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Manager.php";
 require "../classes/Auth.php";
+require "../classes/Image.php";
 
 session_start();
 
@@ -33,7 +34,6 @@ if ( isset($_GET["id"]) ){
     die("ID not entered, employee not found");
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $surname = $_POST["surname"];
@@ -42,10 +42,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $role = $_POST["role"];
 
-    if(Manager::editEmployee($connection, $name, $surname, $position, $login_name, $password, $id, $role)){
-        Url::redirectUrl("/company/director/one-employee.php?id=$id");
-    };
+    $image_name = $_FILES["image"]["name"];
+    $image_size = $_FILES["image"]["size"];
+    $image_tmp_name = $_FILES["image"]["tmp_name"];
+    $error = $_FILES["image"]["error"];
+
+    if(!$error) {
+        if ($image_size > 9000000){
+            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big");
+        } else {
+            $new_image_name = Image::getEmployeePhotoName($image_name, $image_tmp_name);
+                
+            if(Manager::editEmployee($connection, $name, $surname, $position, $login_name, $password, $id, $new_image_name, $role)) {
+                Url::redirectUrl("/company/director/one-employee.php?id=$id");
+            } else {
+                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed");
+            }
+        }
+    } else {
+        Url::redirectUrl("/company/errors/error-page.php?error_text=Unfortunately, the image could not be inserted");
+    }
 }
+
+
 
 ?>
 
@@ -62,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php require "../assets/director-header.php"; ?>
 
     <main class="edit">
-        <form method="POST" class="edit-form">
+        <form method="POST" class="edit-form" enctype="multipart/form-data">
 
             <input  type="text" 
                     name="name" 
@@ -126,6 +145,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
             </div>
+
+            <input type="file" name="image">
 
             <button>Change</button>
         </form>

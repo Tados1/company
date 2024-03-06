@@ -18,12 +18,13 @@ if (!Auth::isLoggedIn("director") ) {
     <link rel="stylesheet" href="../css/home-page.css">
     <title>Home Page</title>
 </head>
+
 <body>
-    <div class="home-page">
-        <?php require "../assets/director-header.php"; ?>
-        <div class="heading-home-page">
-            <h1>HOME PAGE</h1>  
-        </div>      
-    </div>
+    <?php require "../assets/director-header.php"; ?>
+    
+    <div class="blue-background"></div>
+
+    <h1>HOME PAGE</h1>
+    
 </body>
 </html>

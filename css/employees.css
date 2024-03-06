@@ -1,55 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
                 ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.heading-employees {
-    position: relative;
-    color: rgb(219, 219, 219);
-    background-color: black;
-    font-size: 35px;
-    text-align: center;
-    padding: 10px;
-    width: 40vw;
-    clip-path: polygon(50% 0%, 84% 0, 100% 100%, 0 100%, 0 0);
-    margin-top: 50px;
-    z-index: 100;
-}
-
-.heading-employees::before {
-    content: "";
-    position: absolute;
-    top: 97%;
+.background {
+    clip-path: polygon(0 0, 50% 0, 70% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 40vw;
-    height: 0;
-    border-top: 4px solid rgb(209, 209, 209);
-    box-sizing: border-box;
+    width: 70%;
+    height: 100%;
+    z-index: -1;
 }
 
-.heading-employees h1 {
-    margin-right: 80px;
+h1 {
+    color: white;
+    font-size: 90px;
+    margin: 20px 0px 0px 50px;
+    font-style: italic;
+    font-weight: normal;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .02em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
 }
 
 .all-employees-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
     width: 80vw;
-    z-index: 0;
-    padding-top: 100px;
+    margin: 40px auto;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     flex-wrap: wrap;
     z-index: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.buttons {
+    display: flex;
+    margin: 40px 0px 20px 0px;
+}
+
+.filter {
+    position: relative;
+    width: fit-content;
+}
+
+.mainbox {
+    position: relative;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border-radius: 160px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+}
+
+.checkbox:focus {
+    border: none;
+    outline: none;
+}
+
+.checkbox:checked {
+    right: 10px;
+}
+
+.checkbox:checked ~ .mainbox {
+    width: 50px;
+}
+
+.checkbox:checked ~ .mainbox .search_input {
+    width: 0;
+    height: 0px;
+}
+
+.checkbox:checked ~ .mainbox .iconFilter {
+    padding-right: 8px;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 17px;
+    top: 10px;
+    z-index: 9;
+    cursor: pointer;
+    appearance: none;
+}
+
+.search_input {
+    height: 100%;
+    width: 170px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: white;
+    transition: all 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search_input::placeholder {
+    color: rgba(255, 255, 255, 0.776);
+}
+
+.iconFilter {
+    padding-top: 5px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.search_icon {
+    fill: white;
+    font-size: 1.3em;
+}
+
+.button-new-employee {
+    position: relative;
+    border: 4px solid rgb(69, 206, 119);
+    background-color: rgb(49, 126, 77);
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    transition: all linear .3s;
+    box-shadow: 0px 0px 5px rgb(49, 126, 77);
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.button-new-employee a { 
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(69, 206, 119);
+    transition: all linear .3s;
+}
+
+.button-new-employee:hover {
+    background-color: rgb(69, 206, 119);
+    border: 4px solid rgb(49, 126, 77);
+    transform: rotate(180deg);
+}
+
+.button-new-employee:hover a {
+    color: rgb(49, 126, 77);
 }
 
 .all-employees {
@@ -57,87 +176,190 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-
-
-.button-new-employee {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0px 10px 0px;
-}
-
-.button-new-employee a {
-    text-decoration: none;
-    font-size: 25px;
-    color: rgb(223, 223, 223);
-    background-color: rgb(75, 75, 75);
-    padding: 7px 15px;
-    border-radius: 20px;
-    transition: all linear 0.2s;
-}
-
-.button-new-employee a:hover,
-.button-new-employee a:active {
-    color: white;
-    background-color: black;
-}
-
-.filter {
-    text-align: center;
-}
-
-.filter input {
-    background-color: rgb(75, 75, 75);
-    color: rgb(223, 223, 223);
-    border-radius: 20px;
-    margin: 10px;
-    font-size: 20px;
-    padding: 5px 10px;
-    margin-bottom: 30px;
-    outline: none;
-    border: none;
+    padding-left: 40px;
 }
 
 .one-employee {
     position: relative;
-    background-color: black;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
     border-radius: 10px;
-    width: 300px;
-    height: 80px;
+    width: 280px;
+    height: 60px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin: 20px 50px;
-    transition: all linear 0.2s;
+    margin: 30px 40px;
+    transition: all linear 0.4s;
+    padding-left: 20px;
 }
 
 .one-employee:hover,
 .one-employee:active {
-    box-shadow: 0px 0px 40px rgb(0, 0, 0);
+    transform: scale(1.2);
 }
 
 .one-employee img {
     position: absolute;
     transform: translateX(-50%);
-    left: 0;
-    height: 130%;
+    left: 0%;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 3px solid black;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
 .one-employee h2 {
-    color: white;
+    color: rgb(218, 218, 218);
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin-left: 50px;
 }
 
 .one-employee a {
     text-decoration: none;
-    color: rgb(173, 173, 173);
+    color: rgb(218, 218, 218);
+    font-size: 25px;
+    transition: all linear 0.3s;
+    margin-right: 10px;
 }
-
 
 .one-employee a:hover,
 .one-employee a:active  {
-    color: #6e6e6ee7;
+    transform: scale(1.3) rotate(360deg);
+    color: white;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1400px) {
+    .all-employees-content {
+        width: 85vw;
+    }
+    
+    .one-employee {
+        width: 200px;
+    }
+    
+    .one-employee img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .one-employee h2 {
+        font-size: 16px;
+        margin-left: 30px;
+    }
+    
+    .one-employee a {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    .all-employees {
+        padding-left: 0px;
+    }
+
+    .one-employee {
+        width: 170px;
+        height: 40px;
+        margin: 20px 30px;
+    }
+    
+    .one-employee img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .one-employee h2 {
+        font-size: 13px;
+        margin-left: 15px;
+    }
+    
+    .one-employee a {
+        font-size: 15px;
+        margin-right: 5px;
+    }
+    
+    .one-employee a:hover,
+    .one-employee a:active  {
+        transform: scale(1.15) rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .buttons {
+        margin: 10px 0px 0px 0px;
+    }
+
+    .button-new-employee {
+        width: 34px;
+        height: 34px;
+        margin-right: 10px;
+        margin-top: 8px;
+    }
+
+    .button-new-employee a { 
+        font-size: 25px;
+        top: 55%;
+    }
+
+    .mainbox {
+        transform: scale(0.7);
+    } 
+
+}
+
+@media only screen and (max-width: 550px) {
+
+    .one-employee {
+        width: 120px;
+        height: 35px;
+        margin: 15px 20px;
+    }
+    
+    .one-employee img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .one-employee h2 {
+        font-size: 13px;
+        margin-left: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    .buttons {
+        display: flex;
+    }
+    
+    .button-new-employee {
+        width: 28px;
+        height: 28px;
+        margin-right: 5px;
+        margin-top: 11px;
+        border: 2px solid rgb(69, 206, 119);
+    }
+    
+    .button-new-employee:hover {
+        border: 2px solid rgb(49, 126, 77);
+    }
+
+    .mainbox {
+        transform: scale(0.6);
+    } 
+    
+    .one-employee {
+        width: 80%;
+        height: 25px;
+        margin: 5px 0px;
+    }
+    
+    .one-employee img {
+        width: 30px;
+        height: 30px;
+    }
 }

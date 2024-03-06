@@ -4,6 +4,7 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Machine.php";
 require "../classes/Auth.php";
+require "../classes/Image.php";
 
 session_start();
 
@@ -14,6 +15,7 @@ $connection = Database::databaseConnection();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if(Machine::deleteMachine($connection, $_GET["id"])){
+        Image::deleteMachinePhoto($connection);
         Url::redirectUrl("/company/manager/machines.php");
     };
 }
@@ -32,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <?php require "../assets/manager-header.php"; ?>
 
-    <main  class="delete-page">
+    <div class="background"></div>
+
         <section class="delete-form">
             <form method="POST">
             <div class="user-icon"><i class="fa-solid fa-trash"></i></div>
@@ -43,9 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="btns">
                     <button>Delete</button>
                     <a href="machines.php">Cancel</a>
-                </div>          
+                </div>      
             </form>
         </section>
-    </main>
 </body>
 </html>

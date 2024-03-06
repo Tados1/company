@@ -1,42 +1,219 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #e4e4e4;
-    width: 60vw;
-    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 10% 100%, 0 0);
-    border-bottom: 4px solid black;
-    z-index: 1000;
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-135deg, #121a64, #316888);
+  clip-path: circle(25px at calc(100% - 45px) 45px);
+  transition: all 0.3s ease-in-out;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
 }
 
-.header ul {
+.nav-bar #active:checked ~ .wrapper {
+  clip-path: circle(75%);
+}
+
+.menu-btn {
+  position: fixed;
+  z-index: 200;
+  right: 20px;
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #012c8a, #36aff5);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar #active:checked ~ .menu-btn {
+  background: #fff;
+  color: #012c8a;
+}
+
+.nav-bar #active:checked ~ .menu-btn i:before {
+  content: "\f00d";
+}
+
+.wrapper ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+
+.wrapper ul li {
+  margin: 15px 0;
+}
+
+.wrapper ul li a {
+  color: none;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  position: relative;
+  line-height: 50px;
+  transition: all 0.3s ease;
+}
+
+.wrapper ul li a:after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.wrapper ul li a:hover:after {
+  transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+  color: #012c8a;
+}
+
+.nav-bar input[type="checkbox"] {
+  display: none;
+}
+
+.logout {
     display: flex;
-    justify-content: right;
     align-items: center;
-    margin-right: 120px;
+    justify-content: flex-start;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+    margin: 0 auto;
+}
+  
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.sign svg {
+    width: 17px;
+}
+  
+.sign svg path {
+    fill: white;
+}
+ 
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    transition-duration: .3s;
+    font-size: 23px;
+    padding-left: 5px;
 }
 
-.header ul li {
-    list-style: none;
-    font-size: 25px;
-    padding: 15px 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.logout:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+  
+.logout:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+  
+.logout:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+.logout:active {
+    transform: translate(2px ,2px);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        clip-path: circle(15px at calc(100% - 35px) 35px);
+    }
+
+    .wrapper ul li a {
+        font-size: 20px;
+    }
     
+    .menu-btn {
+    right: 20px;
+    top: 20px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    }     
 }
 
-.header ul li a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    transition: all linear 0.2s;
+@media only screen and (max-width: 440px) {
+    .wrapper ul li a {
+      font-size: 17px;
+      padding: 0px 5px;
+      line-height: 25px;
+    }
+
+    .logout-button {
+      margin-top: 20px;
+    }
+
+    .wrapper ul li a:after {
+      height: 25px;
+    }
+
+    .logout {
+        width: 25px;
+        height: 25px;
+    }
+
+    .sign svg {
+        width: 12px;
+    }
+    
+    .text {
+        font-size: 16px;
+    }
 }
 
-.header ul li a:hover,
-.header ul li a:active {
-    color: rgb(116, 116, 116);
-}
+  

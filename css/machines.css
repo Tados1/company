@@ -1,53 +1,181 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
                 ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-.heading-machine {
-    position: relative;
-    color: rgb(219, 219, 219);
-    background-color: black;
-    font-size: 50px;
-    text-align: center;
-    padding: 10px;
-    width: 40vw;
-    clip-path: polygon(50% 0%, 84% 0, 100% 100%, 0 100%, 0 0);
-    margin-top: 50px;
-}
-
-.heading-machine::before {
-    content: "";
-    position: absolute;
-    top: 97%;
+.background {
+    clip-path: polygon(0 0, 50% 0, 70% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 40vw;
-    height: 0;
-    border-top: 4px solid rgb(209, 209, 209);
-    box-sizing: border-box;
+    width: 70%;
+    height: 100%;
+    z-index: -1;
 }
 
-.heading-machine h1 {
-    margin-right: 80px;
+h1 {
+    color: white;
+    font-size: 90px;
+    margin: 20px 0px 0px 50px;
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: .02em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .all-machines-content {
-    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
     width: 80vw;
-    margin: 2% auto;
-    border-radius: 20px;
-}
-
-.all-machines {
+    margin: 40px auto;
+    border-radius: 30px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
     flex-wrap: wrap;
+    z-index: 0;
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
+
+.buttons {
+    display: flex;
+    margin: 30px 0px 10px 0px;
+}
+
+/*********************** Search Machine Filter ************************/
+
+.filter {
+    position: relative;
+    width: fit-content;
+}
+
+.mainbox {
+    position: relative;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border-radius: 160px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+}
+
+.checkbox:focus {
+    border: none;
+    outline: none;
+}
+
+.checkbox:checked {
+    right: 10px;
+}
+
+.checkbox:checked ~ .mainbox {
+    width: 50px;
+}
+
+.checkbox:checked ~ .mainbox .search_input {
+    width: 0;
+    height: 0px;
+}
+
+.checkbox:checked ~ .mainbox .iconFilter {
+    padding-right: 8px;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 17px;
+    top: 10px;
+    z-index: 9;
+    cursor: pointer;
+    appearance: none;
+}
+
+.search_input {
+    height: 100%;
+    width: 170px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: white;
+    transition: all 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search_input::placeholder {
+    color: rgba(255, 255, 255, 0.776);
+}
+
+.iconFilter {
+    padding-top: 5px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.search_icon {
+    fill: white;
+    font-size: 1.3em;
+}
+
+/*********************** Add New Machine Button ************************/
+
+.button-new-machine {
+    position: relative;
+    border: 4px solid rgb(69, 206, 119);
+    background-color: rgb(49, 126, 77);
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    transition: all linear .3s;
+    box-shadow: 0px 0px 5px rgb(49, 126, 77);
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.button-new-machine a { 
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(69, 206, 119);
+    transition: all linear .3s;
+}
+
+.button-new-machine:hover {
+    background-color: rgb(69, 206, 119);
+    border: 4px solid rgb(49, 126, 77);
+    transform: rotate(180deg);
+}
+
+.button-new-machine:hover a {
+    color: rgb(49, 126, 77);
+}
+
 
 .button-add-machine {
     display: block;
@@ -72,30 +200,22 @@ body {
     background-color: black;
 }
 
-.filter {
-    text-align: center;
-}
+/******************************************************************/
 
-.filter input {
-    background-color: rgb(75, 75, 75);
-    color: rgb(223, 223, 223);
-    border-radius: 20px;
-    margin: 10px;
-    font-size: 20px;
-    padding: 5px 10px;
-    outline: none;
-    border: none;
+.all-machines {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .one-machine {
-    box-shadow: 0px 0px 10px rgb(158, 158, 158);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
     border-radius: 10px;
     width: 200px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
+    background-color: rgb(27, 27, 27);
+    color: white;
+    margin: 30px 10px;
     transition: all linear 0.2s;
 }
 
@@ -105,51 +225,170 @@ body {
 
 .one-machine img {
     width: 100%;
-    border-radius: 10px;
+    height: 150px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.first-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
 }
 
 .one-machine h2 {
-    color: white;
-    background-color: rgb(27, 27, 27);
-    width: 100%;
-    text-align: center;
-    padding: 5px;
-    letter-spacing: 2px;
-    margin-top: -5px;
-    margin-bottom: 5px;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.one-machine-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px 0px 5px;
+}
+
+.second-info-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
 }
 
 .one-machine p {
-    font-size: 18px;
+    font-size: 14px;
     padding: 3px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
 }
 
-.one-machine a {
-    text-decoration: none;
-    padding: 2px;
+/*********************** Edit Machine Button ************************/
+
+.edit-btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    border: 2px solid rgb(167, 167, 167);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin-right: 10px;
 }
 
 
-.one-machine a:first-of-type {
-    color: #1A5D1A;
-    transition: all linear 0.2s;
+.edit-btn:hover::before {
+    transform: scale(1);
 }
 
-.one-machine a:first-of-type:hover,
-.one-machine a:first-of-type:active {
-    color: #229e22;
+.edit-btn svg {
+    height: 8px;
+    fill: white;
+    z-index: 3;
+    transition: all 0.2s;
+    transform-origin: bottom;
 }
 
-
-.one-machine a:last-of-type  {
-    color: #E21818;
-    transition: all linear 0.2s;
+.edit-btn:hover svg {
+    transform: rotate(-15deg) translateX(5px);
 }
 
-.one-machine a:last-of-type:hover,
-.one-machine a:last-of-type:active  {
-    color: #ff5100e7;
+.edit-btn::after {
+    content: "";
+    width: 12px;
+    height: 1px;
+    position: absolute;
+    bottom: 7px;
+    left: -5px;
+    background-color: white;
+    border-radius: 2px;
+    z-index: 2;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s ease-out;
+}
+
+.edit-btn:hover::after {
+    transform: scaleX(1);
+    left: 0px;
+    transform-origin: right;
+}
+
+/*********************** Delete Machine Button ************************/
+
+.delete-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid rgb(167, 167, 167);
+    transition-duration: 0.3s;
+}
+
+.btn-bottom {
+    width: 8px;
+}
+
+.btn-top {
+    width: 8px;
+    transform-origin: right;
+    transition-duration: 0.3s;
+}
+
+.delete-btn:hover .btn-top {
+    transform: rotate(45deg);
+}
+
+.delete-btn:active {
+    transform: scale(0.9);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+
+@media only screen and (max-width: 850px) {
+   h1 {
+        font-size: 60px;
+   }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .all-machines-content {
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin: 20px 0px 0px 30px;
+    }
+
+    .buttons {
+        transform: scale(0.7);
+        margin: 10px 0px 10px 0px;
+    } 
+
+    .one-machine {
+        margin: 0px 0px 20px 0px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .all-machines-content {
+        width: 90vw;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin: 20px 0px 0px 20px;
+    }
+
 }

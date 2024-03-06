@@ -41,10 +41,10 @@ class Manager {
         }
     }
 
-    public static function createEmployee($connection, $name, $surname, $position, $login_name, $password, $role) {
+    public static function createEmployee($connection, $name, $surname, $position, $login_name, $password, $role, $image_name) {
 
-        $sql = "INSERT INTO employee (name, surname, position, login_name, password, role) 
-        VALUES (:name, :surname, :position, :login_name, :password, :role)";
+        $sql = "INSERT INTO employee (name, surname, position, login_name, password, role, image_name) 
+        VALUES (:name, :surname, :position, :login_name, :password, :role, :image_name)";
 
         $stmt = $connection->prepare($sql);
 
@@ -54,6 +54,7 @@ class Manager {
         $stmt->bindValue(":login_name", $login_name, PDO::PARAM_STR);
         $stmt->bindValue(":password", password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);  
         $stmt->bindValue(":role", $role, PDO::PARAM_STR);
+        $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
 
         try {
             if($stmt->execute()) {
@@ -68,7 +69,7 @@ class Manager {
         }
     }
 
-    public static function editEmployee($connection, $name, $surname, $position, $login_name, $password, $id, $role = "employee"){
+    public static function editEmployee($connection, $name, $surname, $position, $login_name, $password, $id, $image_name, $role = "employee"){
 
         $sql = "UPDATE employee
                     SET name = :name,
@@ -76,6 +77,7 @@ class Manager {
                         position = :position,
                         login_name = :login_name,
                         password = :password,
+                        image_name = :image_name,
                         role = :role
                     WHERE employee_id = :id";
         
@@ -87,6 +89,7 @@ class Manager {
         $stmt->bindValue(":login_name", $login_name, PDO::PARAM_STR);
         $stmt->bindValue(":password", password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);  
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
         $stmt->bindValue(":role", $role, PDO::PARAM_STR);
 
         try {

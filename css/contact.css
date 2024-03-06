@@ -6,6 +6,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form form {
@@ -19,36 +20,244 @@
     align-items: center;
 }
 
-.form form input, textarea {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 40px;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid white;
-    color: white;
+.inputbox {
+    position: relative;
+    width: 400px;
+    z-index: 0;
 }
 
-.form form textarea {
+.inputbox input,
+.inputbox textarea {
+    position: relative;
+    width: 100%;
+    padding: 80px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #23242a;
+    font-size: 20px;
     resize: none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 15;
+}
+
+.inputbox span {
+    position: absolute;
+    left: 0;
+    padding: 60px 10px 10px;
+    font-size: 35px;
+    color: #8f8f8f;
+    letter-spacing: 2px;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.inputbox input:valid ~span,
+.inputbox input:focus ~span {
+    color: #45f3ff;
+    transform: translateX(-10px) translateY(-20px);
+    font-size: 20px; 
+}
+
+.inputbox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #45f3ff, #5398ff);
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.inputbox textarea + span {
+    top: 40%;
+}
+
+.inputbox input:valid ~i,
+.inputbox input:focus ~i {
+    height: 40px;
+}
+
+.inputbox textarea:valid ~span,
+.inputbox textarea:focus ~span {
+    color: #45f3ff;
+    transform: translateX(-10px) translateY(-90px);
+    font-size: 20px; 
+}
+
+.inputbox textarea:valid ~i,
+.inputbox textarea:focus ~i {
+    height: 115px;
 }
 
 .form form button {
-    margin-top: 40px;
-    font-size: 50px;
-    color: rgb(0, 0, 0);
-    background-color: transparent;
-    color: rgb(139, 139, 139);
-    padding: 5px 10px;
-    cursor: pointer;
+    font-size: 20px;
+    background: #00eeff;
+    color: rgb(8, 75, 163);
+    font-weight: bold;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
     border: none;
-    outline: none;
-    transition: 0.3s linear all;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 40px;
+    transition: all 0.2s;
+    cursor: pointer;
 }
 
-.form form button:hover,
+.form form button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.form form button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.form form button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+  
+.form form button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+  
+.form form button:hover span {
+    transform: translateX(5em);
+}
+  
 .form form button:active {
-    transform: scale(1.2);
-    color: white;
+    transform: scale(0.95);
+}
+  
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+  
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1100px) { 
+    .form form {
+        width: 70vw;
+    }
+}
+  
+@media only screen and (max-width: 800px) {
+    .inputbox {
+        width: 300px;
+    }
+    
+    .inputbox input,
+    .inputbox textarea {
+        font-size: 15px;
+    }
+    
+    .inputbox span {
+        font-size: 25px;
+    }
+    
+    .inputbox input:valid ~span,
+    .inputbox input:focus ~span {
+        font-size: 15px; 
+    }
+
+    
+    .inputbox textarea:valid ~span,
+    .inputbox textarea:focus ~span {
+        font-size: 15px; 
+    }
+    
+    .inputbox textarea:valid ~i,
+    .inputbox textarea:focus ~i {
+        height: 95px;
+    }
+    
+    .form form button {
+        font-size: 17px;
+    }
+}
+  
+
+@media only screen and (max-width: 650px) { 
+    .form form {
+        width: 100vw;
+        clip-path: none;
+    } 
+}
+  
+@media only screen and (max-width: 350px) {
+    .inputbox {
+        width: 200px;
+    }
+
+    .inputbox input,
+    .inputbox textarea {
+        font-size: 13px;
+        padding: 60px 10px 10px;
+    }
+
+    .inputbox span {
+        font-size: 15px;
+    }
+    
+    .inputbox input:valid ~span,
+    .inputbox input:focus ~span {
+        font-size: 13px; 
+    }
+    
+    .inputbox textarea:valid ~span,
+    .inputbox textarea:focus ~span {
+        font-size: 13px; 
+    }
+    
+    .inputbox textarea:valid ~i,
+    .inputbox textarea:focus ~i {
+        height: 105px;
+    }
+    
+    .form form button {
+        font-size: 12px;
+        padding: 0.3em 1em;
+        margin-top: 20px;
+    }
+
+    .inputbox input:valid ~span,
+    .inputbox input:focus ~span {
+        transform: translateX(-10px) translateY(-40px);
+    }
+
+    .inputbox textarea:valid ~span,
+    .inputbox textarea:focus ~span {
+        transform: translateX(-10px) translateY(-110px);
+    }
 }

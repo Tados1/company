@@ -1,70 +1,268 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.sign-in-content {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
-    ,url('../img/background.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+body {
+  background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+              ,url('../img/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.sign-in-form {
-    background-color: rgba(255, 255, 255, 0.5);
-    height: 50vh;
-    width: 25vw;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    border-radius: 30px;
+form {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 30px;
+  font-family: sans-serif;
 }
 
-.sign-in-form h1 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    font-size: 25px;
-    font-family: sans-serif;
+form h1 {
+  margin-top: -100px;
+  margin-bottom: 30px;
+  font-size: 25px;
 }
 
-.sign-in-form form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+form p {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.sign-in-form form p {
-    font-family: sans-serif;
-    margin-top: 20px;
-    margin-bottom: 10px;
+form input {
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  border-radius: 15px;
+  background-color: transparent;
+  padding: 0.2em 0.4em;
+  font-size: 25px;
 }
 
-.sign-in-form form input {
-    outline: none;
-    border: 2px solid black;
-    border-radius: 15px;
-    background-color: transparent;
-    padding: 5px 10px;
-    font-size: 25px;
-}
-
-.sign-in-form input[type="submit"] {
-    background-color: black;
-    color: white;
-    width: 340px;
-    margin-top: 30px;
-    cursor: pointer;
-    transition: 0.2s linear all;
+form input[type="submit"] {
+  background-color: rgb(197, 197, 197);
+  color: rgb(0, 0, 0);
+  width: 300px;
+  margin-right: 25px;
+  margin-top: 40px;
+  cursor: pointer;
+  transition: 0.2s linear all;
 }   
 
-.sign-in-form input[type="submit"]:hover,
-.sign-in-form input[type="submit"]:active {
-    box-shadow: 0px 0px 20px black;
+form input[type="submit"]:hover,
+form input[type="submit"]:active {
+  background-color: rgb(255, 255, 255);
 }   
+
+.btn-lock {
+  position: absolute;
+  top: 61%;
+  right: 17%;
+  display: inline-block;
+  background: #f33737;
+  width: 64px;
+  height: 64px;
+  padding: 12px 0 0 18px;
+  border-radius: 50%;
+}
+
+.btn-lock svg {
+  fill: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.btn-lock svg .bling {
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 3;
+  stroke-dashoffset: 15;
+  transition: all 0.8s ease;
+}
+
+.btn-lock svg .lock {
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 36;
+  transition: all 0.8s ease;
+}
+
+.btn-lock svg .lockb {
+  fill: #fff;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  transform: rotate(8deg);
+  transform-origin: 14px 20px;
+  transition: all 0.8s ease;
+}
+
+#inpLock {
+  display: none;
+}
+
+#inpLock:checked + label {
+  background: #16c458;
+}
+
+#inpLock:checked + label svg {
+  opacity: 1;
+}
+
+#inpLock:checked + label svg .bling {
+  animation: bling6132 0.3s linear forwards;
+  animation-delay: 0.6s;
+}
+
+#inpLock:checked + label svg .lock {
+  stroke-dasharray: 48;
+  animation: locked 0.7s linear forwards;
+}
+
+#inpLock:checked + label svg .lockb {
+  transform: rotate(0);
+  transform-origin: 14px 22px;
+}
+
+.error p {
+color: #f33737;
+position: absolute;
+transform: translateX(-50%);
+left: 50%;
+width: 100%;
+text-align: center;
+}
+
+@keyframes bling6132 {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+
+@keyframes locked {
+  50% {
+    transform: translateY(1px);
+  }
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 600px) {
+form {
+  height: 400px;
+  width: 400px;
+}
+
+form h1 {
+  margin-top: -50px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.btn-lock {
+  top: 69%;
+  right: 8%;
+}
+}
+
+@media only screen and (max-width: 450px) {
+form {
+  height: 300px;
+  width: 300px;
+}
+
+form h1 {
+  font-size: 15px;
+}
+
+form p {
+  margin-top: 20px;
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+form input {
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 13px;
+}
+
+form input[type="submit"] {
+  width: 180px;
+  margin-right: 0px;
+  margin-top: 30px;
+}   
+
+form .btn-lock {
+  top: 67%;
+  right: 18%;
+  width: 34px;
+  height: 34px;
+  padding: 0 0 0 10px;
+}
+
+.btn-lock svg {
+  width: 20px;
+  margin-top: -4px;
+} 
+}
+
+@media only screen and (max-width: 450px) {
+form {
+  height: 200px;
+  width: 200px;
+}
+
+form h1 {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+form p {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  font-size: 10px;
+}
+
+form input {
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 12px;
+}
+
+form input[type="submit"] {
+  width: 140px;
+  margin-right: 15px;
+  margin-top: 20px;
+}   
+
+form .btn-lock {
+  top: 73%;
+  right: 11%;
+  width: 30px;
+  height: 30px;
+  padding: 0 0 0 9px;
+}
+
+.btn-lock svg {
+  width: 17px;
+  margin-top: -6px;
+} 
+}

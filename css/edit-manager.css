@@ -68,15 +68,16 @@
     padding: 10px 25px;
     cursor: pointer;
     margin-top: 50px;
-    background-color: #4CB9E7;
-    border: none;
+    background-color: black;
+    color: #4CB9E7;
+    border: 2px solid #4CB9E7;
     border-radius: 30px;
     transition: all linear .2s;
 }
 
 .edit-form button:hover,
 .edit-form button:active {
-    box-shadow: 0px 0px 60px #4CB9E7;
-    color: #0175af;
-    transform: scale(1.1);
+    box-shadow: 0px 0px 30px #2c91bd;
+    color: #6bc8f0;
+    transform: scale(1.05);
 }

@@ -41,7 +41,11 @@ if ( isset($_GET["id"]) and is_numeric($_GET["id"])) {
                 <div class="one-employee-box">
 
                     <div class="employee-photo">
-                        <img src="../img/employee.jpg" alt="">
+                        <?php if($employees["image_name"]): ?>
+                            <img src=<?= "../uploads/employees/" . $employees["image_name"] ?> alt="">
+                        <?php else: ?>
+                            <img src="../uploads/default-photos/employee.jpg" >
+                        <?php endif; ?>
                     </div>    
 
                     <div class="about-one-employee">

@@ -1,59 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: rgb(219, 219, 219);
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .background-work-schedule {
+    clip-path: polygon(0 0, 50% 0, 70% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 70%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)), url('../img/background.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat; 
-    clip-path: polygon(0 0, 67% 0, 54% 100%, 0% 100%);
 }
 
-.work-schedule {
+h1 {
+    color: white;
+    font-size: 90px;
+    margin: 20px;
+    font-style: italic;
+    font-weight: normal;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: .02em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+
+.all-employees-content {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 70%;
+    margin: 50px auto;
+    padding: 50px 10px;
+    border-radius: 40px;
     position: relative;
-    z-index: 0;
 }
 
-.heading-work-schedule {
+.filter {
     position: relative;
-    color: rgb(219, 219, 219);
-    background-color: black;
-    font-size: 35px;
-    text-align: center;
-    padding: 10px;
-    width: 40vw;
-    clip-path: polygon(50% 0%, 84% 0, 100% 100%, 0 100%, 0 0);
-    margin-top: 50px;
-    z-index: 100;
+    width: fit-content;
+    margin: 20px auto 30px auto;
 }
 
-.heading-work-schedule::before {
-    content: "";
+.mainbox {
+    position: relative;
+    width: 230px;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border-radius: 160px;
+    background-color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+}
+
+.checkbox:focus {
+    border: none;
+    outline: none;
+}
+
+.checkbox:checked {
+    right: 10px;
+}
+
+.checkbox:checked ~ .mainbox {
+    width: 50px;
+}
+
+.checkbox:checked ~ .mainbox .search_input {
+    width: 0;
+    height: 0px;
+}
+
+.checkbox:checked ~ .mainbox .iconFilter {
+    padding-right: 8px;
+}
+
+.checkbox {
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 97%;
-    left: 0;
-    width: 40vw;
-    height: 0;
-    border-top: 4px solid rgb(209, 209, 209);
-    box-sizing: border-box;
+    right: 17px;
+    top: 10px;
+    z-index: 9;
+    cursor: pointer;
+    appearance: none;
+}
+
+.search_input {
+    height: 100%;
+    width: 170px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: white;
+    transition: all 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search_input::placeholder {
+    color: rgba(255, 255, 255, 0.776);
+}
+
+.iconFilter {
+    padding-top: 5px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.search_icon {
+    fill: white;
+    font-size: 1.3em;
 }
 
 .all-employees {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 70%;
-    margin: 100px auto;
-    padding: 50px 10px;
-    border-radius: 40px;
 }
 
 .one-employee {
@@ -61,28 +136,74 @@ body {
 }
 
 .one-employee h2 {
-    font-size: 32px;
+    font-size: 18px;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .one-employee p {
-    font: 20px;
+    font: 16px;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .one-employee a img {
-    width: 200px;
-    border: 5px solid black;
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
     border-radius: 50%;
     padding: 5px;
-    background-color: rgb(255, 0, 0);
+    background-color: #cc0000;
     transition: all linear .2s
+}
+
+.active a img {
+    background-color: #54B435;
 }
 
 .one-employee a img:hover,
 .one-employee a img:active {
-    transform: scale(1.1) rotate(20deg);
+    transform: scale(1.1);
     box-shadow: 0px 0px 40px black;
 }
+
+.radio-inputs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 100%;
+    font-size: 20px;
+  }
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #bbbbbb;
+    font-weight: 600;
+  }
