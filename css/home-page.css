@@ -13,14 +13,6 @@ body {
     background-attachment: fixed;
 }
 
-.blue-background {
-    clip-path: polygon(0 0, 55% 0, 76% 100%, 0% 100%);
-    background-color: rgba(0, 58, 97, 0.7);
-    width: 60%;
-    height: 100%;
-    position: absolute;
-}
-
 h1 {
     position: absolute;
     transform: translateY(-50%);

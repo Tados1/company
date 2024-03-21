@@ -42,13 +42,15 @@ if (!Auth::isLoggedIn("manager") ) {
 <body>
     <?php require "../assets/manager-header.php"; ?>
 
-    <div class="background"></div>
+    <?php require "../assets/blue-background.php"; ?>
     
     <h1>MACHINES</h1>
  
     <?php if(empty($machines)): ?>
-        <p>There are no machines</p>
-        <a href="add-machine.php">ADD MACHINE</a>
+        <div class="empty-page">
+            <p>There are no machines</p>
+            <a href="add-machine.php">+ Add machine</a>
+        </div>
     <?php else: ?>
         <div class="all-machines-content">
 
@@ -57,25 +59,13 @@ if (!Auth::isLoggedIn("manager") ) {
                     <a href="add-machine.php">+</a>
                 </div>
 
-                <div class="filter">
-                    <input checked="" class="checkbox" type="checkbox"> 
-                    <div class="mainbox">
-                        <div class="iconFilter">
-                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
-                        </div>
-                    <input class="search_input" placeholder="Search Machine" type="text">
-                    </div>
-                </div>
+                <?php require "../assets/filter.php"; ?>
             </div>
 
             <div class="all-machines">
                 <?php foreach($machines as $one_machine): ?>
                     <div class="one-machine">
-                        <?php if ($one_machine["machine_image"]): ?>
-                            <img src="../uploads/machines/<?= htmlspecialchars($one_machine["machine_image"])?>" >
-                        <?php else: ?>
-                            <img src="../uploads/default-photos/machine.jpg" >
-                        <?php endif; ?>
+                        <img src="../uploads/machine/<?= htmlspecialchars($one_machine["machine_image"])?>" >
 
                         <section class="first-info-row">
                             <h2><?= htmlspecialchars($one_machine["machine_name"]) ?></h2>

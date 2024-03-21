@@ -4,16 +4,18 @@ const allOneMachineArray = Array.from(allOneMachine);
 const allMachinesDiv = document.querySelector(".all-machines");
 
 const machinesObjects = allOneMachineArray.map((oneMachine, index) => {
+    const h2Content = oneMachine.querySelector('h2').textContent;
     return {
         id: index,
-        machineHTML: oneMachine.innerHTML
+        machineHTML: oneMachine.innerHTML,
+        machineName: h2Content
     };
 });
 
 input.addEventListener("input", () => {
     const inputText = input.value.toLowerCase();
     const filteredMachines = machinesObjects.filter((oneMachine) => {
-        return oneMachine.machineHTML.toLowerCase().includes(inputText);
+        return oneMachine.machineName.toLowerCase().includes(inputText);
     });
 
     allMachinesDiv.innerHTML = "";

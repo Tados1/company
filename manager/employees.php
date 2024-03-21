@@ -1,7 +1,7 @@
 <?php 
 
 require "../classes/Database.php";
-require "../classes/Manager.php";
+require "../classes/Employee.php";
 require "../classes/Auth.php";
 
 session_start();
@@ -12,8 +12,17 @@ if (!Auth::isLoggedIn("manager") ) {
 
 $connection = Database::databaseConnection();
 
-$employees = Manager::getAllEmployees($connection, "employee_id, name, surname, image_name");
+$employees = Employee::getAllEmployees($connection, "employee", "employee_id, name, surname, position, employee_image");
     
+$filter_value = $_GET['radio'] ?? "all"; 
+
+$filtered_employees = [];
+foreach ($employees as $employee) {
+    if ($filter_value === 'all' || $employee['position'] === $filter_value) {
+        $filtered_employees[] = $employee;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,40 +51,47 @@ $employees = Manager::getAllEmployees($connection, "employee_id, name, surname, 
 <body>
     <?php require "../assets/manager-header.php"; ?>
 
-    <div class="background"></div>
+    <?php require "../assets/blue-background.php"; ?>
     
     <h1>Employees</h1>
     
     <?php if(empty($employees)): ?>
-        <p>There are no employees</p>
-        <a href="add-employee.php">ADD EMPLOYEE</a>
+        <div class="empty-page">
+            <p>There are no employees</p>
+            <a href="add-employee.php">ADD EMPLOYEE</a>
+        </div>
     <?php else: ?>
         <div class="all-employees-content"> 
+
+            <form class="radio-inputs">
+                <label class="radio">
+                    <input type="radio" <?= $filter_value === 'all' ? 'checked' : '' ?> onclick="updateUrlParam('all')">
+                    <span class="name">All Employees</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" <?= $filter_value === 'turner' ? 'checked' : '' ?> onclick="updateUrlParam('turner')">
+                    <span class="name">Turners</span>
+                </label>
+                    
+                <label class="radio">
+                    <input type="radio" <?= $filter_value === 'miller' ? 'checked' : '' ?> onclick="updateUrlParam('miller')">
+                    <span class="name">Millers</span>
+                </label>
+            </form>
+
 
             <div class="buttons">
                 <div class="button-new-employee">
                     <a href="add-employee.php">+</a>
                 </div>
 
-                <div class="filter">
-                    <input checked="" class="checkbox" type="checkbox"> 
-                    <div class="mainbox">
-                        <div class="iconFilter">
-                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
-                        </div>
-                    <input class="search_input" placeholder="Search Employee" type="text">
-                    </div>
-                </div>
+                <?php require "../assets/filter.php"; ?>
             </div>
             
             <div class="all-employees">
-                <?php foreach($employees as $one_employee): ?>
+                <?php foreach($filtered_employees as $one_employee): ?>
                     <div class="one-employee">
-                        <?php if ($one_employee["image_name"]): ?>
-                            <img src="../uploads/employees/<?= htmlspecialchars($one_employee["image_name"])?>" >
-                        <?php else: ?>
-                            <img src="../uploads/default-photos/employee.jpg" >
-                        <?php endif; ?>
+                        <img src="../uploads/employee/<?= htmlspecialchars($one_employee["employee_image"])?>" >
                         <h2><?= htmlspecialchars($one_employee["name"])." ".htmlspecialchars($one_employee["surname"])?></h2>
                         <a href="one-employee.php?id=<?= $one_employee["employee_id"] ?>"><i class="fa-solid fa-circle-info"></i></a>
                     </div>            
@@ -85,5 +101,14 @@ $employees = Manager::getAllEmployees($connection, "employee_id, name, surname, 
     <?php endif; ?>
 
     <script src="../js/employee-filter.js"></script>
+
+    <script>
+        function updateUrlParam(value) {
+            var url = new URL(window.location.href);
+            url.searchParams.set('radio', value);
+            window.history.replaceState({}, '', url);
+            location.reload(); 
+        }
+    </script>
 </body>
 </html>

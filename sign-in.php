@@ -14,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (User::authentication($connection, $login_name, $login_password)) {
         
-        $id = User::getUserId($connection, $login_name);
-        $position = User::getUserPosition($connection, $login_name);
-        $role = User::getUserRole($connection, $id);
+        $id = User::getUserInfo($connection, $login_name, "employee_id");
+        $position = User::getUserInfo($connection, $login_name, "position");
+        $role = User::getUserInfo($connection, $login_name, "role");
 
         session_regenerate_id(true);
 

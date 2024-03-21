@@ -3,7 +3,7 @@
 require "../classes/Database.php";
 require "../classes/Machine.php";
 require "../classes/Auth.php";
-require "../classes/Manager.php";
+require "../classes/Employee.php";
 
 session_start();
 
@@ -15,7 +15,7 @@ $formData = null;
 $id = $_GET["id"];
 
 $connection = Database::databaseConnection(); 
-$employee = Manager::getEmployee($connection, $id, "name");
+$employee = Employee::getEmployee($connection, $id, "name");
 
 if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
     $formData = unserialize($_COOKIE["employee_$id"]);
@@ -37,7 +37,8 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
 </head>
 <body>
     <?php require "../assets/employee-header.php"; ?>
-    <div class="background"></div>
+    
+    <?php require "../assets/blue-background.php"; ?>
 
     <main>
         <?php if (!empty($formData)): ?>
@@ -49,7 +50,7 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
                         <i class="fa-solid fa-gear"></i>
                     </div>
                     <div class="box-text">
-                        <h2><?= strtoupper($formData["work-type"]) ?></h2>
+                        <p><?= strtoupper($formData["work-type"]) ?></p>
                     </div>
                 </div>
                 
@@ -58,13 +59,13 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
                         <img src="../img/machine1.png" alt="">
                     </div>
 
-                    <?php if(!empty($formData["selectedMachines"])): ?>
-                        <div class="box-text">
-                            <?php foreach($formData["selectedMachines"] as $machine): ?>
-                                <p> <?= $machine ?> </p>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+                    <div class="box-text">
+                        <?php if(!empty($formData["selectedMachines"])): ?>
+                                <?php foreach($formData["selectedMachines"] as $machine): ?>
+                                    <p> <?= $machine ?> </p>
+                                <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
                     
                 <div class="box box3">

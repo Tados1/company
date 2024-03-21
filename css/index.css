@@ -55,6 +55,8 @@ a {
     gap: 0.6em;
     font-size: 22px;
     text-decoration: none;
+    transition: all 0.2s linear;
+    font-family: 'Poppins', sans-serif;
 }
   
 a .arrow-wrapper {
@@ -86,7 +88,7 @@ a .arrow::before {
 }
   
 a:hover {
-    background-color: var(--hover-color);
+    background-color: #0a5092;
 }
   
 a:hover .arrow {

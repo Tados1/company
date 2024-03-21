@@ -1,13 +1,11 @@
-.edit-machine {
-    position: relative;
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
-    ,url('../img/background.webp');
+body {
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100vh;
-    width: 100vw;
+    font-family: 'Poppins', sans-serif;
 }
 
 .edit-form {
@@ -15,8 +13,8 @@
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    width: 50%;
-    height: 70%;
+    width: 880px;
+    height: 600px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 30px;
     box-shadow: 0px 0px 150px #000000;
@@ -24,61 +22,280 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
 }
 
-.edit-form input {
+.edit-form form {
+    width: 450px;
+}
+
+.edit-form input[type=text]{
     font-size: 25px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #4CB9E7;
+    width: 100%;
     outline: none;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-}
-
-.edit-form label {
-    font-size: 25px;
+    padding: 0.4rem 0.6rem;
+    background-color: transparent;
     color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.edit-form p {
-    margin-top: 30px;
-    font-size: 37px;
-    color: #4CB9E7;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.machine-type, .machine-status {
+    font-size: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.edit-form input[type="radio"] {
-    display: none; 
+option {
+    background-color: black;
 }
 
-.edit-form .radio-label {
-    margin: 12px;
+.machine-type {
+    margin-bottom: 20px;
+}
+
+.machine-type select {
+    font-size: 25px;
+    outline: none;
+    padding: 0.2rem 1.8rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.machine-status select {
+    font-size: 22px;
+    outline: none;
+    padding: 0.2rem 0.8rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
     text-align: center;
 }
 
-.edit-form .radio-label input[type="radio"]:checked + label {
-    color: #4CB9E7;
-    font-size: 28px;
+.machine-status {
+    margin-bottom: 20px;
 }
 
-.edit-form button {
-    font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 10px 25px;
+/*********************** INPUT TYPE FILE **************************/
+
+.file-upload {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px dashed #e8e8e8;
+    background-color: transparent;
+    border-radius: 10px;
     cursor: pointer;
-    margin-top: 50px;
-    background-color: #4CB9E7;
-    border: none;
-    border-radius: 30px;
-    transition: all linear .2s;
+    margin: 20px auto;
 }
 
-.edit-form button:hover,
-.edit-form button:active {
-    box-shadow: 0px 0px 60px #4CB9E7;
-    color: #0175af;
-    transform: scale(1.1);
+.file-upload .icon svg {
+    height: 80px;
+    fill: #e8e8e8;
+}
+
+.file-upload p {
+    color: #e8e8e8;
+}
+
+.file-upload input {
+    display: none;
+}
+
+/*********************** SEND FORM BUTTON **************************/
+
+button {
+    outline: none;
+    cursor: pointer;
+    padding: 0.9rem 1.2rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgb(32, 135, 253);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    width: 100%;
+    margin-top: 20px;
+}
+
+button span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+
+button:hover span {
+    color: rgb(255, 255, 255);
+}
+
+button::before,
+button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    z-index: 0;
+}
+
+button::before {
+    content: "";
+    background: rgb(255, 255, 255);
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+button:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 1000px) {
+    .edit-form {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .edit-form {
+        width: 400px;
+        height: 450px;
+    }
+    
+    .edit-form form {
+        width: 90%;
+    }
+    
+    .edit-form input[type=text]{
+        font-size: 20px;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .machine-type, .machine-status {
+        font-size: 20px;
+    }
+    
+    .machine-type option, .machine-status option {
+        font-size: 16px;
+    }
+    
+    .machine-type select {
+        font-size: 17px;
+        padding: 0.2rem 1.2rem;
+    }
+    
+    .machine-status select {
+        font-size: 17px;
+        padding: 0.2rem 0.2rem;
+    }
+    
+    .file-upload {
+        height: 100px;
+        width: 180px;
+        gap: 5px;
+        margin: 30px auto 20px auto;
+    }
+    
+    .file-upload .icon svg {
+        height: 40px;
+    }
+    
+    .file-upload p {
+        font-size: 12px;
+    }
+    
+    button {
+        padding: 0.5rem 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .edit-form {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .edit-form input[type=text]{
+        font-size: 12px;
+    }
+    
+    .machine-type, .machine-status {
+        font-size: 12px;
+    }
+    
+    .machine-type option, .machine-status option {
+        font-size: 12px;
+    }
+    
+    .machine-type select {
+        font-size: 12px;
+        padding: 0.2rem .9rem;
+    }
+    
+    .machine-status select {
+        font-size: 12px;
+    }
+    
+    .file-upload {
+        height: 80px;
+        width: 150px;
+        gap: 2px;
+    }
+    
+    .file-upload .icon svg {
+        height: 30px;
+    }
+    
+    .file-upload p {
+        font-size: 10px;
+    }
+    
+    button {
+        padding: 0.2rem 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .edit-form {
+        width: 200px;
+        height: 350px;
+    }
+    
+    .machine-type, .machine-status {
+        font-size: 10px;
+    }
+    
+    .machine-type option, .machine-status option {
+        font-size: 10px;
+    }
+    
+    .machine-type select {
+        font-size: 10px;
+    }
+    
+    .machine-status select {
+        font-size: 12px;
+        padding: 0.1rem 0rem;
+    }
+    
+    button {
+        padding: 0.1rem 1.2rem;
+        font-size: 14px;
+    }
 }

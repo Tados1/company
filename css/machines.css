@@ -14,17 +14,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.background {
-    clip-path: polygon(0 0, 50% 0, 70% 100%, 0% 100%);
-    background-color: rgba(0, 58, 97, 0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 100%;
-    z-index: -1;
-}
-
 h1 {
     color: white;
     font-size: 90px;
@@ -56,100 +45,16 @@ h1 {
     margin: 30px 0px 10px 0px;
 }
 
-/*********************** Search Machine Filter ************************/
-
-.filter {
-    position: relative;
-    width: fit-content;
-}
-
-.mainbox {
-    position: relative;
-    width: 230px;
-    height: 50px;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    border-radius: 160px;
-    background-color: rgb(0, 0, 0);
-    transition: all 0.3s ease;
-}
-
-.checkbox:focus {
-    border: none;
-    outline: none;
-}
-
-.checkbox:checked {
-    right: 10px;
-}
-
-.checkbox:checked ~ .mainbox {
-    width: 50px;
-}
-
-.checkbox:checked ~ .mainbox .search_input {
-    width: 0;
-    height: 0px;
-}
-
-.checkbox:checked ~ .mainbox .iconFilter {
-    padding-right: 8px;
-}
-
-.checkbox {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 17px;
-    top: 10px;
-    z-index: 9;
-    cursor: pointer;
-    appearance: none;
-}
-
-.search_input {
-    height: 100%;
-    width: 170px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding-bottom: 4px;
-    padding-left: 10px;
-    font-size: 1em;
-    color: white;
-    transition: all 0.3s ease;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.search_input::placeholder {
-    color: rgba(255, 255, 255, 0.776);
-}
-
-.iconFilter {
-    padding-top: 5px;
-    width: fit-content;
-    transition: all 0.3s ease;
-}
-
-.search_icon {
-    fill: white;
-    font-size: 1.3em;
-}
-
 /*********************** Add New Machine Button ************************/
 
 .button-new-machine {
     position: relative;
-    border: 4px solid rgb(69, 206, 119);
-    background-color: rgb(49, 126, 77);
+    background-color: rgb(0, 0, 0);
     border-radius: 50%;
     padding: 10px;
     width: 50px;
     height: 50px;
     transition: all linear .3s;
-    box-shadow: 0px 0px 5px rgb(49, 126, 77);
     margin-right: 20px;
     cursor: pointer;
 }
@@ -161,21 +66,13 @@ h1 {
     left: 50%;
     text-decoration: none;
     font-size: 40px;
-    font-weight: bold;
-    color: rgb(69, 206, 119);
+    color: rgb(255, 255, 255);
     transition: all linear .3s;
 }
 
 .button-new-machine:hover {
-    background-color: rgb(69, 206, 119);
-    border: 4px solid rgb(49, 126, 77);
-    transform: rotate(180deg);
+    transform: scale(1.15);
 }
-
-.button-new-machine:hover a {
-    color: rgb(49, 126, 77);
-}
-
 
 .button-add-machine {
     display: block;
@@ -351,14 +248,91 @@ h1 {
     transform: scale(0.9);
 }
 
+/*********************** Empty Page ************************/
+
+.empty-page {
+    align-items: center;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.empty-page p {
+    color: white;
+    text-shadow: 0px 0px 20px black;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.empty-page a {
+     text-decoration: none;
+     background-color: rgb(30, 151, 30);
+     color: white;
+     font-size: 30px;
+     border-radius: 10px;
+     padding: 10px 20px;
+     transition: all linear .2s;
+}
+
+.empty-page a:hover,
+.empty-page a:active {
+    font-size: 33px;
+}
+
+
 /* ---------------------- CSS media queries ------------------- */
 
+@media only screen and (max-width: 1050px) {
+    .button-new-machine {
+        width: 40px;
+        height: 40px;
+        margin-top: 4px;
+    }
+}
 
 @media only screen and (max-width: 850px) {
    h1 {
         font-size: 60px;
    }
 
+   .empty-page {
+        margin-top: 100px;
+    }
+
+    .empty-page p {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .empty-page a {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+
+    .empty-page a:hover,
+    .empty-page a:active {
+        font-size: 21px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .buttons {
+        margin: 10px 0px;
+    }
+
+    .button-new-machine {
+        width: 29px;
+        height: 29px;
+        margin-right: 5px;
+        margin-top: 10px;
+    }
+
+    .button-new-machine a { 
+        font-size: 27px;
+    }
+
+    .one-machine {
+        margin: 0px 0px 20px 0px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -369,15 +343,6 @@ h1 {
     h1 {
         font-size: 40px;
         margin: 20px 0px 0px 30px;
-    }
-
-    .buttons {
-        transform: scale(0.7);
-        margin: 10px 0px 10px 0px;
-    } 
-
-    .one-machine {
-        margin: 0px 0px 20px 0px;
     }
 }
 
@@ -390,5 +355,18 @@ h1 {
         font-size: 30px;
         margin: 20px 0px 0px 20px;
     }
+    
+    .empty-page p {
+        font-size: 20px;
+    }
 
+    .empty-page a {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+
+    .empty-page a:hover,
+    .empty-page a:active {
+        font-size: 18px;
+    }
 }

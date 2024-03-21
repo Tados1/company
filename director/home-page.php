@@ -22,7 +22,7 @@ if (!Auth::isLoggedIn("director") ) {
 <body>
     <?php require "../assets/director-header.php"; ?>
     
-    <div class="blue-background"></div>
+    <?php require "../assets/blue-background.php"; ?>
 
     <h1>HOME PAGE</h1>
     

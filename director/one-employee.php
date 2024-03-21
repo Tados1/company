@@ -1,7 +1,7 @@
 <?php
 
 require "../classes/Database.php";
-require "../classes/Manager.php";
+require "../classes/Employee.php";
 require "../classes/Auth.php";
 
 session_start();
@@ -13,7 +13,7 @@ if (!Auth::isLoggedIn("director") ) {
 $connection = Database::databaseConnection();
 
 if ( isset($_GET["id"]) and is_numeric($_GET["id"])) { 
-    $employees = Manager::getEmployee($connection, $_GET["id"]);
+    $employees = Employee::getEmployee($connection, $_GET["id"]);
 } else {
     $employees = null;
 }
@@ -31,37 +31,36 @@ if ( isset($_GET["id"]) and is_numeric($_GET["id"])) {
 <body>
     <?php require "../assets/director-header.php"; ?>
 
-    <main>
-        <div class="background"></div>
+    <?php require "../assets/blue-background.php"; ?>
 
+    <main>
+        
         <section class="one-employee">
             <?php if($employees === null): ?>
                 <p>There is no employee</p>
             <?php else: ?>
                 <div class="one-employee-box">
+                    <div class="box-background"></div>
 
-                    <div class="employee-photo">
-                        <?php if($employees["image_name"]): ?>
-                            <img src=<?= "../uploads/employees/" . $employees["image_name"] ?> alt="">
-                        <?php else: ?>
-                            <img src="../uploads/default-photos/employee.jpg" >
-                        <?php endif; ?>
-                    </div>    
-
+                    <div class="profile-photo">
+                        <img src=<?= "../uploads/employee/" . $employees["employee_image"] ?> alt="">
+                    </div>
+                
                     <div class="about-one-employee">
-                        <div class="employee-name">
-                            <h2><?= htmlspecialchars($employees['name']) . " ".htmlspecialchars($employees['surname'])?></h2>
-                        </div>
+                        <h2><?= htmlspecialchars($employees['name']) . " ".htmlspecialchars($employees['surname'])?></h2>
+                        
+                        <?php if($employees['role'] === "employee"): ?>
+                            <p>Position: <?= htmlspecialchars($employees['position'])?></p>
+                        <?php endif; ?>
 
-                        <p>Position: <?= htmlspecialchars($employees['position'])?></p>
                         <p>Role: <?= htmlspecialchars($employees['role'])?></p>
                         <p>Login Name: <?= htmlspecialchars($employees['login_name'])?></p>
-                    
+
                         <div class="employee-buttons">
                             <a href="edit-employee.php?id=<?= $employees["employee_id"] ?>" class="edit">Edit</a>
                             <a href="delete-employee.php?id=<?= $employees["employee_id"] ?>" class="delete">Delete</a>
                         </div>
-                    </div>
+                    </div>                 
                 </div>
             <?php endif ?>
         </section>

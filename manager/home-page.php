@@ -21,7 +21,7 @@ if (!Auth::isLoggedIn("manager") ) {
 <body>
     <?php require "../assets/manager-header.php"; ?>
 
-    <div class="blue-background"></div>
+    <?php require "../assets/blue-background.php"; ?>
 
     <h1>HOME PAGE</h1>  
 </body>

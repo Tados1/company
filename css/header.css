@@ -12,7 +12,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(-135deg, #121a64, #316888);
+  background: linear-gradient(-135deg, #054581, #3e83ac);
   clip-path: circle(25px at calc(100% - 45px) 45px);
   transition: all 0.3s ease-in-out;
   z-index: 100;

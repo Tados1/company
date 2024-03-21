@@ -1,6 +1,6 @@
 .contact {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
-                ,url('../img/background.webp');
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+    ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

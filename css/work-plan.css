@@ -1,212 +1,290 @@
-.work-plan {
-    background: linear-gradient(rgba(10, 95, 206, 0.3), rgb(0, 0, 0)) 
-    ,url('../img/background.webp');
+body {
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
 
-.work-plan form  {
-    background-color: rgba(255, 255, 255, 0.5);
-    height: 70vh;
-    width: 80vw;
+.work-plan form {
     position: absolute;
     transform: translate(-50%, -50%);
-    left: 50%;
     top: 50%;
+    left: 50%;
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: 0px 0px 150px #000000;
+    color: white;
 }
 
-.work-questions {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-}
-
-.work-plan button {
-    margin: 0 auto;
-}
+/*********************** WORK TYPE **************************/
 
 .type-of-work {
-    border-right: 2px solid black;
-    height: 90%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 30px;
 }
 
-.type-of-work p {
-    font-size: 70px;
-    margin-bottom: 50px;
+.type-of-work label {
+    margin-right: 40px;
 }
 
-.radio-label label {
-    cursor: pointer;
+.type-of-work option {
+    background-color: black;
 }
 
-.type-of-work input[type="radio"] {
-    display: none; 
+.type-of-work select {
+    font-size: 20px;
+    outline: none;
+    padding: 0.2rem 1.8rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgb(173, 173, 173);
+    border-radius: 10px;
 }
 
-.type-of-work .radio-label {
-    cursor: pointer;
-    font-size: 50px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.type-of-work .radio-label input[type="radio"]:checked + label {
-    color: rgb(35, 32, 211);
-    font-size: 65px;
-}
+/*********************** TEXT-AREA **************************/
 
 .message-about-work {
-    border-right: 2px solid black;
-    height: 90%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    text-align: center;
+} 
 
 .message-about-work textarea {
     color: black;
-    border: none;
     outline: none;
-    background-color: transparent;
-    font-size: 40px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    height: 100%;
+    border: 2px solid rgb(173, 173, 173);
+    border-radius: 5px;
+    background-color: transparent; 
+    color: white;
     resize: none;
+    width: 90%;
+    height: 250px;
+    padding: 0.9rem;
+    font-size: 19px;
+    margin: 20px 0px;
 }
 
 .message-about-work textarea::placeholder {
-    color: black; 
+    color: rgb(185, 185, 185); 
+    font-size: 19px;
 }
 
+/*********************** MACHINES **************************/
 .machines-for-work {
-    width: 100%;
-    height: 90%;
+    height: 250px;
 }
 
-.machines-for-work p {
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.machines {
+fieldset {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    scrollbar-color: rgb(255, 255, 255) rgba(73, 73, 73, 0.5);
 }
+
+legend {
+    font-size: 22px;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.one-machine {
+    width: 150px;
+}
+
+/*********************** SEND BUTTON **************************/
 
 .work-plan form button {
     display: block;
-    margin-top: 40px;
+    margin: 20px 0px;
     font-size: 50px;
-    color: rgb(0, 0, 0);
     background-color: transparent;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     padding: 5px 10px;
     cursor: pointer;
     border: none;
     outline: none;
     transition: 0.3s linear all;
+    width: 100%;
 }
 
 .work-plan form button:hover,
 .work-plan form button:active {
     transform: scale(1.2);
-    color: rgb(59, 59, 59);
 }
 
-/* The switch - the box around the slider */
-.switch {
-    font-size: 17px;
-    position: relative;
-    display: inline-block;
-    width: 9em;
-    height: 5em;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #B0B0B0;
-    border: 1px solid #B0B0B0;
-    transition: .4s;
-    border-radius: 32px;
-    outline: none;
-    width: 41%;
-    height: 40%;
-    margin: 0 auto;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    outline: 2px solid #B0B0B0;
-    left: -1px;
-    bottom: -1px;
-    background-color: #fff;
-    transition: transform .25s ease-in-out 0s;
-  }
-  
-  .slider-icon {
-    opacity: 0;
-    height: 12px;
-    width: 12px;
-    stroke-width: 8;
-    position: absolute;
-    z-index: 999;
-    stroke: #222222;
-    right: 60%;
-    top: 30%;
-    transition: right ease-in-out .3s, opacity ease-in-out .15s;
-  }
-  
-  input:checked + .slider {
-    background-color: #222222;
-  }
-  
-  input:checked + .slider .slider-icon {
-    opacity: 1;
-    right: 20%;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(1.5em);
-    outline-color: #181818;
-  }
+/* ---------------------- CSS media queries ------------------- */
 
-  .switch p {
-    font-size: 17px;
-    margin-top: 20px;
-  }
+@media only screen and (max-width: 1000px) {
+    .work-plan form {
+        width: 600px;
+    }
+
+    .type-of-work {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .type-of-work label {
+        margin-right: 20px;
+    }
+
+    .type-of-work select {
+        font-size: 17px;
+        padding: 0.2rem .6rem;
+    }
+
+    .message-about-work textarea {
+        height: 200px;
+        font-size: 16px;
+    }
+
+    .message-about-work textarea::placeholder {
+        font-size: 16px;
+    }
+
+    fieldset {
+        gap: 10px;
+        width: 90%;
+        padding: 20px 0px;
+        margin: 0 auto;
+    }
+
+    legend {
+        font-size: 18px;
+    }
+
+    .one-machine {
+        width: 100px;
+        font-size: 13px;
+    }
+
+    .work-plan form button {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .work-plan form {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .work-plan form {
+        width: 400px;
+    }
+
+    .type-of-work {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .type-of-work label {
+        margin-right: 10px;
+    }
+
+    .type-of-work select {
+        font-size: 12px;
+        padding: 0.1rem;
+    }
+
+    .message-about-work textarea {
+        height: 150px;
+        font-size: 12px;
+    }
+
+    .message-about-work textarea::placeholder {
+        font-size: 12px;
+    }
+
+    .machines-for-work {
+        height: 180px;
+    }
+
+    fieldset {
+        gap: 5px;
+        padding: 10px 0px;
+    }
+
+    legend {
+        font-size: 14px;
+    }
+
+    .one-machine {
+        font-size: 11px;
+    }
+
+    .work-plan form button {
+        font-size: 25px;
+        margin: 10px 0px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .work-plan form {
+        width: 250px;
+    }
+
+    .type-of-work {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+
+    .type-of-work label {
+        margin-right: 10px;
+    }
+
+    .type-of-work select {
+        font-size: 10px;
+    }
+
+    .message-about-work textarea {
+        height: 100px;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .message-about-work textarea::placeholder {
+        font-size: 10px;
+    }
+
+    fieldset {
+        gap: 2px;
+        padding: 2px 0px;
+    }
+
+    legend {
+        font-size: 12px;
+    }
+
+    .one-machine {
+        font-size: 10px;
+    }
+
+    .work-plan form button {
+        font-size: 17px;
+        margin: 10px 0px;
+    }
+}
+
+@media only screen and (max-width: 290px) {
+
+    .machines-for-work {
+        height: 150px;
+    }
+
+    .message-about-work textarea {
+        margin: 10px 0px;
+    }
+    
+}
+

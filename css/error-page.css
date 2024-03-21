@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(rgba(253, 253, 253, 0.3), rgb(0, 0, 0)) 
+                ,url('../img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+}
+
+.blue-background {
+    clip-path: polygon(0 0, 55% 0, 76% 100%, 0% 100%);
+    background-color: rgba(0, 58, 97, 0.7);
+    width: 60%;
+    height: 100%;
+    position: absolute;
+}
+
+.error {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    width: 100vw;
+}
+
+.error p {
+    color: white;
+    font-size: 40px;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.error a {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
+    font-size: 25px;
+    transition: all linear 0.2s;
+}
+
+.error a:hover,
+.error a:active {
+    font-size: 27px;
+}
+
+/* ---------------------- CSS media queries ------------------- */
+
+@media only screen and (max-width: 750px) {
+    .error p {
+        font-size: 30px;
+    }
+    
+    .error a {
+        font-size: 18px;
+    }
+    
+    .error a:hover,
+    .error a:active {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .error p {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    
+    .error a {
+        font-size: 14px;
+    }
+    
+    .error a:hover,
+    .error a:active {
+        font-size: 16px;
+    }
+}

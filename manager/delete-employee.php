@@ -2,7 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Url.php";
-require "../classes/Manager.php";
+require "../classes/Employee.php";
 require "../classes/Auth.php";
 require "../classes/Image.php";
 
@@ -15,8 +15,8 @@ if (!Auth::isLoggedIn("manager") ) {
 $connection = Database::databaseConnection();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if(Manager::deleteEmployee($connection, $_GET["id"])){
-        Image::deleteEmployeePhoto($connection);
+    if(Employee::deleteEmployee($connection, $_GET["id"])){
+        Image::deletePhoto($connection, "employee");
         Url::redirectUrl("/company/manager/employees.php");
     };
 }

@@ -72,3 +72,12 @@ Error with function editMachine
 Error with function createEmployee
 Error with function createEmployee
 Error with function createEmployee
+Error with function createEmployee
+Error with function createEmployee
+Error with function createEmployee
+Error with function getAllMachines
+Error with function getAllEmployees
+Error with function getAllEmployees
+Error with function getAllEmployeesForManager
+Error with function deletePhoto: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'employee_image' in 'field list'
+Error with function deletePhoto: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'employee_image' in 'field list'
