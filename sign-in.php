@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["role"] = $role;
 
         if ($role === "director" or $role === "manager") {
-            Url::redirectUrl("/company/$role/home-page.php");
+            Url::redirectUrl("/$role/home-page.php");
         } else {
-            Url::redirectUrl("/company/$role/home-page.php?id=$id");
+            Url::redirectUrl("/$role/home-page.php?id=$id");
         }
         
     } else {

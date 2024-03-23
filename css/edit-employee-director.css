@@ -208,7 +208,7 @@ body {
   @media only screen and (max-width: 600px) {
     .edit-employee-form form {
         width: 350px;
-        height: 400px;
+        height: 500px;
     }
     
     .edit-form input {
@@ -250,58 +250,10 @@ body {
     }
   
     button span {
-      bottom: 7px;
+      bottom: 10px;
     }
-  }
-  
-  @media only screen and (max-width: 400px) {
-    .edit-employee-form form {
-        width: 250px;
-        height: 350px;
-    }
-    
-    .edit-form input {
-      font-size: 12px;
-      padding: 0.3rem 0.6rem;
-      margin-bottom: 10px;
-    }
-  
-    select {
-        font-size: 10px;
-    }
-      
-    .position, .role {
-        font-size: 12px;
-    }
+}
 
-    .position select {
-        padding: 0.2rem 1.2rem;
-        margin-left: 20px;
-    }
-
-    .role select {
-        padding: 0.2rem 0.7rem;
-        margin-left: 40px;
-    }
-  
-    .file-upload {
-      width: 120px;
-      font-size: 10px;
-      gap: 0px;
-      margin: 10px auto;
-    }
-    
-    .file-upload .icon svg {
-      height: 25px;
-      padding-top: 5px;
-    }
-  
-    button {
-      padding: 0.7rem 1.2rem;
-      font-size: 12px;
-    }
-  
-  }
   
   @media only screen and (max-width: 280px) {
     .edit-employee-form form {

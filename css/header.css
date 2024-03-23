@@ -56,6 +56,7 @@
   transform: translate(-50%, -50%);
   list-style: none;
   text-align: center;
+  width: 100%;
 }
 
 .wrapper ul li {
@@ -168,52 +169,6 @@
 
 /* ---------------------- CSS media queries ------------------- */
 
-@media only screen and (max-width: 600px) {
-    .wrapper {
-        clip-path: circle(15px at calc(100% - 35px) 35px);
-    }
 
-    .wrapper ul li a {
-        font-size: 20px;
-    }
-    
-    .menu-btn {
-    right: 20px;
-    top: 20px;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    font-size: 15px;
-    }     
-}
-
-@media only screen and (max-width: 440px) {
-    .wrapper ul li a {
-      font-size: 17px;
-      padding: 0px 5px;
-      line-height: 25px;
-    }
-
-    .logout-button {
-      margin-top: 20px;
-    }
-
-    .wrapper ul li a:after {
-      height: 25px;
-    }
-
-    .logout {
-        width: 25px;
-        height: 25px;
-    }
-
-    .sign svg {
-        width: 12px;
-    }
-    
-    .text {
-        font-size: 16px;
-    }
-}
 
   

@@ -51,7 +51,6 @@ class Image {
                     $filePath = $uploadsDir . '/' . $file;
                     if (file_exists($filePath)) {
                         unlink($filePath);
-                        echo "The file $file has been deleted.<br>";
                     } else {
                         echo "File $file does not exist.<br>";
                     }

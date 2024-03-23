@@ -44,22 +44,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(!$error) {
         if ($image_size > 9000000){
-            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big&page=machines");
+            Url::redirectUrl("/errors/error-page.php?error_text=Your file is too big&page=machines");
         } else {
             $new_image_name = Image::getPhotoName($image_name, $image_tmp_name, "machine");
                 
             if(Machine::editMachine($connection, $machine_name, $machine_type, $machine_status, $new_image_name, $id)) {
                 Image::deletePhoto($connection, "machine");
-                Url::redirectUrl("/company/manager/machines.php");
+                Url::redirectUrl("/manager/machines.php");
             } else {
-                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed&page=machines");
+                Url::redirectUrl("/errors/error-page.php?error_text=Your file extension is not allowed&page=machines");
             }
         }
     } else {
         $machine_image = $one_machine["machine_image"];
         Machine::editMachine($connection, $machine_name, $machine_type, $machine_status, $machine_image, $id);
         Image::deletePhoto($connection, "machine");
-        Url::redirectUrl("/company/manager/machines.php");
+        Url::redirectUrl("/manager/machines.php");
     }
 }
 
@@ -100,8 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="machine-status">
                 <label for="machine_status">Machine Status:</label>
                 <select name="machine_status" id="machine_status">
-                    <option value="active">Active</option>
                     <option value="non-active">Non-active</option>
+                    <option value="active">Active</option>
                 </select>
             </div>
 

@@ -25,10 +25,6 @@ foreach ($segments as $segment) {
             transition: all 0.2s linear;
         }
 
-        .filter:hover  {
-            transform: scale(1.15);
-        }
-
         .mainbox {
             position: relative;
             width: 230px;
@@ -111,16 +107,6 @@ foreach ($segments as $segment) {
 
             .filter:hover  {
                 transform: scale(0.9);
-            }
-        }
-
-        @media only screen and (max-width: 500px) {
-            .filter {
-                transform: scale(0.6);
-            }
-
-            .filter:hover  {
-                transform: scale(0.7);
             }
         }
 

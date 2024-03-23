@@ -21,7 +21,7 @@ $machines = Machine::getExactTypeMachines($connection, $position, "machine_id, m
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     setcookie("employee_$id", serialize($_POST), time() + (24 * 3600), "/");
-    Url::redirectUrl("/company/manager/work-schedule.php");
+    Url::redirectUrl("/manager/work-schedule.php");
 }
 
 ?>

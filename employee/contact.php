@@ -19,30 +19,29 @@ $id = $_GET["id"];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $first_name = $_POST["first_name"];
     $second_name = $_POST["second_name"];
-    $email = $_POST["email"];
     $message = $_POST["message"];
   
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host = "smtp.gmail.com";
+        $mail->Host = "wes1-smtp.wedos.net";
         $mail->SMTPAuth = true;
 
         $mail->CharSet = "UTF-8";
         $mail->Encoding = "base64";
         
-        $mail->Username = "tadeas.strba@gmail.com";
+        $mail->Username = "company@tado-projects.eu";
         //password generation via myaccount.google.com/apppasswords
-        $mail->Password = "wetkcpdgebctryxv";
-        $mail->SMTPSecure = "ssl";
-        $mail->Port = 465;
+        $mail->Password = "Tado1...";
+        $mail->SMTPSecure = "tls";
+        $mail->Port = 587;
             
-        $mail->setFrom("tadeas.strba@gmail.com");
+        $mail->setFrom("company@tado-projects.eu");
         //another address where we can send the same message
-        $mail->addAddress("fansnasvk@gmail.com");
+        $mail->addAddress("company@tado-projects.eu");
         $mail->Subject = "Form sent from the company website by an employee with id $id";
-        $mail->Body = "Name: {$first_name} {$second_name}\nEmail: {$email}\nMessage: {$message}";        
+        $mail->Body = "Name: {$first_name} {$second_name}\nMessage: {$message}";        
     
         $mail->send();     
 
@@ -81,14 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         name="second_name" 
                         required>
                         <span>Surname</span>
-                        <i></i>
-                </div>
-
-                <div class="inputbox">
-                    <input type="email" 
-                        name="email" 
-                        required>
-                        <span>Email</span>
                         <i></i>
                 </div>
 

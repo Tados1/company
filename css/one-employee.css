@@ -91,11 +91,11 @@ body {
 
 @media only screen and (max-width: 550px) {
     .one-employee-box {
-        width: 350px;
+        width: 300px;
     }
     
     .box-background {
-        height: 150px;
+        height: 120px;
     }
 
     .profile-photo img {
@@ -115,47 +115,5 @@ body {
 
     .employee-buttons {
         padding: 20px 0px;
-    }
-}
-
-
-@media only screen and (max-width: 400px) {
-    .one-employee-box {
-        width: 200px;
-    }
-    
-    .box-background {
-        height: 80px;
-    }
-
-    .profile-photo img {
-        width: 100px;
-        height: 100px;
-        margin-top: -50px;
-        border: 3px solid white;
-    }
-
-    .about-one-employee h2 {
-        font-size: 14px;
-        margin-bottom: 7px;
-    }
-
-    .about-one-employee p {
-        font-size: 12px;
-        font-weight: bolder;
-    }
-
-    .employee-buttons {
-        padding: 20px 0px;
-        font-size: 12px;
-    }
-
-    .edit {
-        padding: 2px 10px;
-        margin-right: 10px;
-    }
-    
-    .delete {
-        padding: 2px 5px;
     }
 }

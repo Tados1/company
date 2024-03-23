@@ -13,7 +13,7 @@
         <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
         <div class="wrapper">
             <ul>
-            <li><a href="home-page.php">Home Page</a></li>
+                <li><a href="home-page.php">Home Page</a></li>
                 <li><a href="employees.php">Employees</a></li>
                 
                 <div class="logout-button">

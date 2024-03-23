@@ -41,19 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if(!$error) {
         if ($image_size > 9000000){
-            Url::redirectUrl("/company/errors/error-page.php?error_text=Your file is too big&page=employees");
+            Url::redirectUrl("/errors/error-page.php?error_text=Your file is too big&page=employees");
         } else {
             $new_image_name = Image::getPhotoName($image_name, $image_tmp_name, "employee");
                 
             if(Employee::createEmployee($connection, $name, $surname, $position, $login_name, $password, $role, $new_image_name)) {
-                Url::redirectUrl("/company/director/employees.php");
+                Url::redirectUrl("/director/employees.php");
             } else {
-                Url::redirectUrl("/company/errors/error-page.php?error_text=Your file extension is not allowed&page=employees");
+                Url::redirectUrl("/errors/error-page.php?error_text=Your file extension is not allowed&page=employees");
             }
         }
     } else {
         Employee::createEmployee($connection, $name, $surname, $position, $login_name, $password, $role, "default-employee.jpg");
-        Url::redirectUrl("/company/director/employees.php");
+        Url::redirectUrl("/director/employees.php");
     }
 }
 

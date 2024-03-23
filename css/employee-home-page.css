@@ -230,26 +230,23 @@ body {
 }
 
 @media only screen and (max-width: 480px) {
-    :root {
-        --main-size: 60px;
-        --before-size: 80px;
-    }
-    
     .work-info h1 {
         font-size: 35px;
+        margin-bottom: 20px;
     }
 
     .box-text {
         width: 230px;
-        height: 60px;
+        height: 90px;
     }
 
     .box1 .box-text {
-        font-size: 15px;
+        font-size: 18px;
+        margin-right: 20px;
     }
 
     .box2 {
-        font-size: 8px;
+        font-size: 12px;
     }
     
     .box2 img {
@@ -257,12 +254,16 @@ body {
     }
 
     .box3 .box-text p {
-        font-size: 9px;
+        font-size: 11px;
+        width: 70%;
+        overflow: scroll;
+        margin: 5px 0px;
+        margin-right: 60px;
     }
 
     .icon i {
-        font-size: 2em;
-        padding: 15px;
+        font-size: 4em;
+        padding-top: 20px;
     }
 
     .no-work {
@@ -277,43 +278,4 @@ body {
         font-size: 4.5vw;
     }
 
-}
-
-@media only screen and (max-width: 350px) {
-    :root {
-        --main-size: 50px;
-        --before-size: 70px;
-    }
-    
-    .work-info h1 {
-        font-size: 25px;
-        margin-bottom: 20px;
-    }
-
-    .box-text {
-        width: 180px;
-        height: 50px;
-    }
-
-    .icon i {
-        font-size: 1.5em;
-        padding: 12px;
-    }
-
-    .box2 {
-        left: 10%;
-    }
-
-    .box3 .box-text p {
-        width: 80%;
-        height: 80%;
-        margin: 0px 0px;
-        margin-right: 40px;
-    }
-
-    .no-work p {
-        width: 60%;
-        font-size: 7vw;
-        color: rgba(255, 255, 255, 0.7);
-    }
 }

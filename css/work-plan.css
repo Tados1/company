@@ -180,7 +180,7 @@ legend {
 
 @media only screen and (max-width: 580px) {
     .work-plan form {
-        width: 400px;
+        width: 350px;
     }
 
     .type-of-work {
@@ -225,53 +225,6 @@ legend {
 
     .work-plan form button {
         font-size: 25px;
-        margin: 10px 0px;
-    }
-}
-
-@media only screen and (max-width: 430px) {
-    .work-plan form {
-        width: 250px;
-    }
-
-    .type-of-work {
-        font-size: 12px;
-        margin-top: 15px;
-    }
-
-    .type-of-work label {
-        margin-right: 10px;
-    }
-
-    .type-of-work select {
-        font-size: 10px;
-    }
-
-    .message-about-work textarea {
-        height: 100px;
-        font-size: 10px;
-        padding: 5px;
-    }
-
-    .message-about-work textarea::placeholder {
-        font-size: 10px;
-    }
-
-    fieldset {
-        gap: 2px;
-        padding: 2px 0px;
-    }
-
-    legend {
-        font-size: 12px;
-    }
-
-    .one-machine {
-        font-size: 10px;
-    }
-
-    .work-plan form button {
-        font-size: 17px;
         margin: 10px 0px;
     }
 }

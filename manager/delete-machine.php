@@ -16,7 +16,7 @@ $connection = Database::databaseConnection();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if(Machine::deleteMachine($connection, $_GET["id"])){
         Image::deletePhoto($connection, "machine");
-        Url::redirectUrl("/company/manager/machines.php");
+        Url::redirectUrl("/manager/machines.php");
     };
 }
 

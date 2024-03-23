@@ -239,12 +239,6 @@ h1 {
         padding-left: 0px;
     }
 
-    .button-new-employee {
-        width: 40px;
-        height: 40px;
-        margin-top: 4px;
-    }
-
     .one-employee {
         width: 170px;
         height: 40px;
@@ -306,18 +300,14 @@ h1 {
 }
 
 @media only screen and (max-width: 550px) {
-    h1 {
-        font-size: 40px;
-    }
-
     .radio-inputs {
         font-size: 12px;
     }
 
     .one-employee {
-        width: 120px;
-        height: 35px;
-        margin: 15px 20px;
+        width: 250px;
+        height: 60px;
+        margin: 15px 0px 15px 20px;
     }
     
     .one-employee img {
@@ -326,8 +316,8 @@ h1 {
     }
     
     .one-employee h2 {
-        font-size: 13px;
-        margin-left: 10px;
+        font-size: 18px;
+        margin-left: 20px;
     }
 }
 
@@ -338,21 +328,21 @@ h1 {
     }
 
     .button-new-employee {
-        width: 29px;
-        height: 29px;
+        width: 40px;
+        height: 40px;
         margin-right: 5px;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .button-new-employee a { 
-        font-size: 27px;
+        font-size: 32px;
     }
 }
 
 @media only screen and (max-width: 400px) {
     h1 {
-        font-size: 30px;
-        margin: 20px 0px 0px 20px;
+        font-size: 45px;
+        margin: 30px 0px 0px 10px;
     }
 
     .radio-inputs {
@@ -363,18 +353,7 @@ h1 {
         padding: .2rem 0;
     }
 
-    .buttons {
-        margin: 30px 0px 0px 0px;
-    } 
-    
     .one-employee {
-        width: 80%;
-        height: 25px;
-        margin: 5px 0px;
-    }
-    
-    .one-employee img {
-        width: 30px;
         height: 30px;
     }
 

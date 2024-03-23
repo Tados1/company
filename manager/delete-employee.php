@@ -17,7 +17,7 @@ $connection = Database::databaseConnection();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if(Employee::deleteEmployee($connection, $_GET["id"])){
         Image::deletePhoto($connection, "employee");
-        Url::redirectUrl("/company/manager/employees.php");
+        Url::redirectUrl("/manager/employees.php");
     };
 }
 
