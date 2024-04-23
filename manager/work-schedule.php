@@ -2,6 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Employee.php";
+require "../classes/WorkPlan.php";
 require "../classes/Auth.php";
 
 session_start();
@@ -11,6 +12,9 @@ if (!Auth::isLoggedIn("manager") ) {
 }
 
 $connection = Database::databaseConnection();
+
+// Automatic deletion of old work plans
+WorkPlan::deleteWorkPlan($connection);
 
 $employees = Employee::getAllEmployees($connection, "employee", "employee_id, name, surname, position, employee_image");
 
@@ -67,7 +71,7 @@ foreach ($employees as $employee) {
                 <div class="all-employees">
                     <?php foreach($filtered_employees as $one_employee): ?>
                         <?php $id = $one_employee["employee_id"] ?>
-                                    <?php if(isset($_COOKIE["employee_$id"])): ?>
+                                    <?php if(WorkPlan::checkExistWorkPlan($connection, $id)): ?>
                                         <div class="one-employee active">
                                     <?php else: ?>
                                         <div class="one-employee non-active">

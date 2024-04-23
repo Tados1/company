@@ -2,6 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Machine.php";
+require "../classes/WorkPlan.php";
 require "../classes/Auth.php";
 require "../classes/Employee.php";
 
@@ -16,13 +17,7 @@ $id = $_GET["id"];
 
 $connection = Database::databaseConnection(); 
 $employee = Employee::getEmployee($connection, $id, "name");
-
-if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
-    $formData = unserialize($_COOKIE["employee_$id"]);
-    $workExist = true;
-} else {
-
-}
+$work_plan = WorkPlan::getWorkPlan($connection, $id);
 
 ?>
 
@@ -41,7 +36,7 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
     <?php require "../assets/blue-background.php"; ?>
 
     <main>
-        <?php if (!empty($formData)): ?>
+        <?php if (!empty($work_plan)): ?>
             <div class="work-info">
                 <h1>WORK SCHEDULE</h1>
 
@@ -50,7 +45,7 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
                         <i class="fa-solid fa-gear"></i>
                     </div>
                     <div class="box-text">
-                        <p><?= strtoupper($formData["work-type"]) ?></p>
+                        <p><?= strtoupper($work_plan[0]["work_type"]) ?></p>
                     </div>
                 </div>
                 
@@ -60,11 +55,7 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
                     </div>
 
                     <div class="box-text">
-                        <?php if(!empty($formData["selectedMachines"])): ?>
-                                <?php foreach($formData["selectedMachines"] as $machine): ?>
-                                    <p> <?= $machine ?> </p>
-                                <?php endforeach; ?>
-                        <?php endif; ?>
+                        <p> <?= $work_plan[0]["machines"] ?> </p>
                     </div>
                 </div>
                     
@@ -73,7 +64,7 @@ if (isset($_COOKIE["employee_$id"]) && !empty($_COOKIE["employee_$id"])) {
                         <i class="fa-solid fa-quote-right"></i>
                     </div>
                     <div class="box-text">
-                        <p><?= $formData["note"] ?></p>
+                        <p><?= $work_plan[0]["note"] ?></p>
                     </div>
                 </div>
             </div>

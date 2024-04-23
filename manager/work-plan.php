@@ -6,6 +6,7 @@ $note = null;
 
 require "../classes/Database.php";
 require "../classes/Machine.php";
+require "../classes/WorkPlan.php";
 require "../classes/Auth.php";
 require "../classes/Url.php";
 
@@ -20,7 +21,19 @@ $connection = Database::databaseConnection();
 $machines = Machine::getExactTypeMachines($connection, $position, "machine_id, machine_name");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    setcookie("employee_$id", serialize($_POST), time() + (24 * 3600), "/");
+    $selectedMachines = array();
+    
+    if (isset($_POST["selectedMachines"]) && is_array($_POST["selectedMachines"]) && count($_POST["selectedMachines"]) > 0) {
+        foreach ($_POST["selectedMachines"] as $selectedMachine) {
+            $selectedMachine = htmlspecialchars($selectedMachine);
+            $selectedMachines[] = $selectedMachine;
+        }
+    }
+    if(!WorkPlan::checkExistWorkPlan($connection, $id)) {
+        WorkPlan::createWorkPlan($connection, $id, $_POST["work-type"], $_POST["note"], $selectedMachines);
+    } else {
+        WorkPlan::updateWorkPlan($connection, $id, $_POST["work-type"], $_POST["note"], $selectedMachines);
+    }
     Url::redirectUrl("/manager/work-schedule.php");
 }
 

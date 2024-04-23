@@ -53,7 +53,7 @@ foreach ($employees as $employee) {
 
     <?php require "../assets/blue-background.php"; ?>
     
-    <h1>Employees</h1>
+    <h1>EMPLOYEES</h1>
     
     <?php if(empty($employees)): ?>
         <div class="empty-page">
