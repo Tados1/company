@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if(!WorkPlan::checkExistWorkPlan($connection, $id)) {
-        WorkPlan::createWorkPlan($connection, $id, $_POST["work-type"], $_POST["note"], $selectedMachines);
+        WorkPlan::createWorkPlan($connection, $id, $_POST["work-type"], htmlspecialchars($_POST["note"]), $selectedMachines);
     } else {
-        WorkPlan::updateWorkPlan($connection, $id, $_POST["work-type"], $_POST["note"], $selectedMachines);
+        WorkPlan::updateWorkPlan($connection, $id, $_POST["work-type"], htmlspecialchars($_POST["note"]), $selectedMachines);
     }
     Url::redirectUrl("/manager/work-schedule.php");
 }
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="message-about-work">
                 <textarea name="note"
                     placeholder="Leave a note, e.g. technical drawing number..."
-                    ><?= htmlspecialchars($note) 
+                    ><?= $note
                 ?></textarea>
             </div>
 

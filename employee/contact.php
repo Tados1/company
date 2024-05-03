@@ -31,15 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->CharSet = "UTF-8";
         $mail->Encoding = "base64";
         
-        $mail->Username = "company@tado-projects.eu";
-        //password generation via myaccount.google.com/apppasswords
-        $mail->Password = "Tado1...";
+        $mail->Username = "blabla";
+        $mail->Password = "blabla";
         $mail->SMTPSecure = "tls";
         $mail->Port = 587;
             
-        $mail->setFrom("company@tado-projects.eu");
+        $mail->setFrom("blabla");
         //another address where we can send the same message
-        $mail->addAddress("company@tado-projects.eu");
+        $mail->addAddress("blabla");
         $mail->Subject = "Form sent from the company website by an employee with id $id";
         $mail->Body = "Name: {$first_name} {$second_name}\nMessage: {$message}";        
     

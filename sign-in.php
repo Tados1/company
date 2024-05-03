@@ -9,8 +9,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $connection = Database::databaseConnection();
-    $login_name = $_POST["login_name"];
-    $login_password = $_POST["login_password"];
+    $login_name = htmlspecialchars($_POST["login_name"]);
+    $login_password = htmlspecialchars($_POST["login_password"]);
 
     if (User::authentication($connection, $login_name, $login_password)) {
         
